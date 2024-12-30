@@ -1,0 +1,1076 @@
+%  LaTeX support: latex@mdpi.com 
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
+
+%=================================================================
+\documentclass[geomatics,article,submit,pdftex,moreauthors]{Definitions/mdpi} 
+
+%=================================================================
+%----------
+% journal
+
+% MDPI internal commands
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2024}
+\copyrightyear{2024}
+%\externaleditor{Academic Editor: Firstname Lastname}
+\datereceived{09 December 2024} 
+%\daterevised{} % Only for the journal Acoustics
+\dateaccepted{} 
+\datepublished{} 
+\hreflink{https://doi.org/} % If needed use \linebreak
+%\doinum{}
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, soul, multirow, microtype, tikz, totcount, changepage, attrib, upgreek, cleveref, amsthm, hyphenat, natbib, hyperref, footmisc, url, geometry, newfloat, caption
+
+\graphicspath{{figures/}} % path to folder with figures
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{gensymb} % for \textdegree
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\usepackage{amsmath,mathtools,amsthm}
+	\setcounter{MaxMatrixCols}{15}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{chngcntr}
+\counterwithin*{equation}{section}
+\usepackage[super]{nth}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{adjustbox}
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepmagenta}{RGB}{195,12,214}
+\definecolor{deepgreen}{RGB}{29,122,30}
+\definecolor{mintgreen}{RGB}{192,249,192}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{GainsboroPurple}{RGB}{247,176,247}
+\definecolor{LightSlateGrey}{RGB}{124,118,118}
+%    
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{LightSlateGrey},
+    keywordstyle=\color{deepgreen}\bfseries,
+    emphstyle=\color{deepred},
+    numberstyle=\tiny\color{deepblue},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{gensymb} % for \textdegree
+\usepackage{amsmath,mathtools,amsthm}
+	\setcounter{MaxMatrixCols}{15}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{chngcntr}
+\counterwithin*{equation}{section}
+\usepackage[super]{nth}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{caption}
+\DeclareCaptionType{equ}[][]
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{Improving Bimonthly Landscape Monitoring in Morocco, North Africa, by Integrating Machine Learning with GRASS GIS}
+
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{Improving Bimonthly Landscape Monitoring in Morocco, North Africa, by Integrating Machine Learning with GRASS GIS}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{Polina Lemenkova $^{1,2}$*\orcidA{}}
+
+%\longauthorlist{yes}
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Polina Lemenkova}
+
+% MDPI internal command: Authors, for citation in the left column
+\AuthorCitation{Lemenkova, P.}
+% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address{%
+$^{1}$ \quad Alma Mater Studiorum -- Università di Bologna, Department of Biological, Geological and Environmental Sciences, Via Irnerio 42, Bologna, Emilia-Romagna, Italy, IT-40126. ORCID- 0000-0002-5759-1089, (P.L.).
+
+$^{2}$ \quad Libera Università di Bolzano, Faculty of Agricultural, Environmental and Food Sciences, Piazza Università 5, IT-39100, Bolzano, Trentino-Alto Adige | S\"udtirol, Italy.
+}
+
+% Contact information of the corresponding author
+\corres{Correspondence: polina.lemenkova2@unibo.it ; polina.lemenkova@unibz.it . Tel.: +39-3446928732 (P.L.)}
+
+% Current address and/or shared authorship
+%\firstnote{Current address: Affiliation 3.} 
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{This article presents the development of a new line of research, which arises at the intersection between programming methods of machine learning and the geographic spatial analysis using satellite images and maps. The case study is selected for northern Africa, Morocco. Incorporating machine learning methods into traditional GIS for mapping land cover types is a challenge that has been researched for many years and has many proposed solutions. This article presents the implemented modules of GRASS GIS 'r.learn.train', 'r.learn.predict' and 'r.random' based on the Scikit-Learn libraries of Python for algorithms of supervised classification of remote sensing data. This approach provides a platform for representation of spatiotemporal data, processing and analysis of satellite images and mapping. The objective is to determine the robustness of remote sensing data classification methods over areas with varied geomorphology and diverse landscapes. This article fuses time series of satellite images in northern Morocco, Rif mountains. Six Landsat 8-9 OLI/TIRS satellite images are chosen for 2023 with a bimonthly time interval. Land cover maps are produced from GRASS GIS machine learning methods using the “DecisionTreeClassifier” and “ExtraTreesClassifier” algorithms. The images were processed, classified and analyzed along with detected seasonal changes in vegetation and land cover types identified in the images using computer vision algorithms. This study contributes to the development of cartographic methods of vegetation mapping, and to the environmental monitoring of Rif Mountains, northern Morocco.}
+
+% Keywords
+\keyword{Machine Learning; Remote Sensing; Image Processing; Satellite Image; Mapping; Africa; Image Analysis; Automation; Geography; Earth Sciences} 
+
+% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
+%\PACS{J0101}
+%\MSC{}
+%\JEL{}
+
+\begin{document}
+
+%----------- section ----------->
+\section{Introduction}
+
+The study of the relationship between geomorphology and vegetation has become a major issue for monitoring territories using Earth observation data \cite{Corenblit,Muir,Pu,Cary01091990}. In particular, geospatial data is used in the areas of agricultural land management and climate change \cite{Ahmadian03052016,Lemenkova202412,IMTIAZ2024109172}. The production of land use maps on areas with diversified geomorphology is based on satellite data that allow for regular surface photography \cite{JOHANSSON01011978}. These geospatial data are used in classification processes to produce land use maps. 
+
+In Morocco, the use of satellite images for landscape analysis is explained by the very diverse landscape structure \cite{Sahrane13122022,Marco04032021,Aouraghe01032010}. Since the geography of Morocco extends from the Atlantic Ocean to mountainous areas and the Sahara desert, the country has a complex geomorphological framework and varied topography. In addition, the geological and tectonic development of the Atlas Mountains and their surroundings presents a complex pattern of geological units \cite{Benvenuti31122024,Ouallali03072020,Khalloufi01032010}. This also determines vegetation distribution and controls land use patterns in the mountainous regions of Morocco \cite{ALIELOMAIRI2024101321}. This specific context affects the distribution of vegetation over the country and controls land cover types.
+
+In this context, land cover maps characterizing the environmental land cover play a vital role in mapping areas in Morocco. More specifically, since remote sensing information can be interpreted in terms of landscape structural units, comparing multiple satellite images is useful for detecting changes and monitoring landscape dynamics \cite{CAI2023103226,Lemenkova202405,XIONG2022109132}. However, the question arises regarding the choice of classification algorithms and software for data processing to be provided for classification. The integration of remote sensing data with GIS for environmental mapping has been the subject of research for decades and continues to be a challenging topic. Many approaches to the problem of satellite image analysis have been proposed since the development of satellite missions \cite{NOY2023103377,Lemenkova202403,Su02062020,Potter18102014,Lemenkova202402}.
+
+Furthermore, the performance of image classification methods is linked to the quality of remote sensing data. In the field of cartography, Landsat 8-9 OLI/TIRS image data open new opportunities since the spatial resolution of these data is an advantage for determining land use classes. In this context, the launch of new satellite constellations of Landsat 8-9 OLI/TIRS as Earth observation systems allows the acquisition of time series. The acquisition of these data opens new perspectives in cartography \cite{Farah05012010,Lemenkova202322,Layati03042022,Layati28082024}.
+
+%----------- section ----------->
+\section{Objective and motivation}
+
+This paper focuses specifically on the application of machine learning methods to satellite image processing incorporated into the GRASS GIS software through the embedded Python Scikit-Learning libraries. Machine learning is an artificial approach to geospatial data processing that relies on mathematical and statistical algorithms to give computers the ability to “learn” from data. Machine learning can be applied to satellite images such as Landsat 8-9 OLI/TIRS since pixels are discrete quantitative variables \cite{Lemenkova202026}.
+
+Due to machine learning, the functions of the programs improve their performance in solving geospatial analysis tasks \cite{More02072020,Lemenkova202403,GarciaPedrero03042017}. In the field of satellite image processing, this concerns the usual image processing tasks such as pixel recognition \cite{NASIRI2023103555,EBRAHIMY2023103390}, spectral reflectance analysis \cite{FU2024104421}, classification optimization \cite{PADHY2024100278,Lemenkova202401}, the development of more advanced methods of image analysis and interpretation, as well as the implementation of these methods to cartographic visualization, as discussed earlier \cite{HABIB20231,Lemenkova202406,KHALDI2024104191}. Compared to traditional approaches, the improvements brought by machine learning algorithms concern the modeling of data with an average statistical error as low as possible.
+
+The GIS GRASS software was chosen as the satellite image processing tool for its combination of efficiency and cross-platform compatibility. This paper uses the GIS GRASS machine learning modules ('r.learn.train', 'r.random', 'r.learn.predict' and 'r.category') with the 'ExtraTreesClassifier' and 'DecisionTreeClassifier' models for supervised applications, training and classification of six satellite images. The results of the machine learning approach to image processing are compared with the results of unsupervised classification performed using the GIS GRASS modules 'i.cluster' and 'i.maxlik'.
+
+In programming libraries, image processing algorithms are implemented as a set of functions used to process raster files, perform geospatial analysis, and create maps in the form of visualized images \cite{Lemenkova202227,PEREIRA2023106653,Lemenkova202229,ESKANDARI2024}. This is the fundamental approach that differentiates the method of using script libraries from traditional GIS. The use of programming approaches to processing and analyzing satellite images allows handling complex representations of landscape features and detected objects recognized as land cover types that have various properties (extent and heterogeneity of landscapes, its texture, size of plots, fragmentation and topology, etc.).
+
+In particular, in this research, an exploration of GRASS GIS machine learning modules is presented and exploited with the aim of demonstrating the applicability of the spatiotemporal information management approach to environmental research. The scripts of this platform are similar to libraries in programming languages.
+
+%----------- section ----------->
+\section{Study Area}
+
+The study focuses on northern Morocco, the Rif Mountains, Figure \ref{fig01}. The Rif Mountains were formed as a result of complex tectonic interactions between the African and Eurasian plates. Therefore, the complex geological setting of northern Morocco in the Rif region has resulted in moderate tectonic activities \cite{CRINITI2024106861}. 
+
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_01}
+    \end{center}
+    \caption{General topographic map of Morocco with outlined location of the study area. Mapping software: Generic Mapping Tools (GMT) version 6.4.0. Data source: GEBCO. Map source: author.}
+    \label{fig01}
+\end{figure}
+
+The geomorphological structures of the region are composed of three main structural units from north to south: the internal zone, the flysch nappes and the external zone (Martín-Martín et al., 2023a; Chaloüan and Michard, 1985). The crustal thickness beneath the Rif Mountains differs from 36 to 30 km towards the border with the western Mediterranean (Arab et al., 2020).
+
+The Rif is a mountain range that extends across northern Morocco, skirting the Mediterranean Sea and in particular the Alboran Sea on its southern shore. The Rif constitutes a segment of the Mediterranean Alpine ranges. More specifically, it belongs to the Betico-Rifo-Tellian arc in the southwestern Mediterranean (Carbonel et al., 1981). The Rif-Tell belts located in northern Morocco present a young Alpine orogenic system of Morocco that presents various metamorphic complexes formed by geodynamic and tectonic activity in the past (Boudouhou 1997; Michard et al., 2006). This region is characterized by deep sediments that are related to Tethyan rifting (Martín-Martín et al., 2023b; Mouhssine et al., 1999; Marchand 1998), which in turn strongly affect soil properties and vegetation types (Boutahar et al., 2023).
+
+There are very diverse ecosystem types that occupy the landscapes from the foothills, slopes and valleys of limestone mountains to the Saharan sebkhas. The main types of land cover are presented in Figure \ref{fig02}.
+
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_02}
+    \end{center}
+    \caption{Land cover types in Morocco. Data source: Food and Agriculture Organization (FAO). The map is created using QGIS software. Map source: author.}
+    \label{fig02}
+\end{figure}
+
+The geomorphological structure of the Rif can be divided into three segments. The Western Rif is covered with large mountains; its climate is mild, with heavy rains and showers in winter. The Central Rif has diverse reliefs and heterogeneous landscapes. The Eastern Rif is the flattest part of the range (Guillaume et al., 2018). The primary type is presented by the vegetation of the cultivated lands in mosaic distributed along the basement of the Rif Mountains. The vegetation types in the Atlas Mountains region are presented by a closed to open evergreen or semi-deciduous broadleaf forest, with a forest cover of 100 to 40\% for closed to open trees or semi-deciduous trees. This geomorphological and climatic heterogeneity corresponds to a bio-ecological and environmental diversity. Thus, the spatial richness of the conditions of climate and geology accentuates this biodiversity and types of land use in Morocco.
+
+The main structure of the Rif is represented by the limestone massifs. The underground water reserves of the Rif maintain the distribution of vegetation and the rivers that originate in the Rif \cite{Aqil03042015}. Thanks to these hydrogeological features, short coastal rivers and streams flow from the Rif to the Mediterranean, which are characterized by a torrential and erosional regime \cite{Zouhri01062004}. These sources of these rivers supply water to diverse and very heterogeneous types of vegetation around the Rif. These processes briefly illustrate the close link between the geomorphological features, hydrogeology and vegetation of the Rif region. 
+
+The Rif Mountains region is located between latitudes 34\degree 30'-35°15'N and longitudes 4°30'-5°30'W, with an extension of about 30,000 m and an occupation of 4000 km². This particular geographical position and vast geographical extent between Africa and Europe results in a great variety of ecosystems in Morocco. Landscapes vary from humid in the Rif and Atlas, to arid Saharan in the south of the country, including sub-humid transition zones and semi-arid in the plains and foothills areas (Kettani and Langton, 2012).
+
+Seismic, electrical, magnetic and thermal activities in the Rif caused by local crustal earthquakes are related to the tectonic and geological instability of this region \cite{DUARTE2024104330}. Specifically, this region presents a southern branch of the Betic-Rif arc that is part of the Alpine ranges. This region has experienced deformations between northwest Africa and southern Spain (Iberia) since the Tertiary \cite{CHABLI2014123}, followed by the convergence between Africa and the Iberian Peninsula \cite{LGHAMOUR2024108941,KAIROUANI2024106762}. As a result, this tectonic block is expelled towards the west-southwest and the region still experiences seismic and tectonic activities \cite{MALUSA2024230533}. At the same time, seismic-tectonic activities shape the regional geomorphology \cite{SADKAOUI2024105219}. In turn, this controls the distribution of land cover types and is expressed in the landscapes. Such links between geology, geomorphology and environmental context have been discussed in previous works \cite{COSTA2024109578,BOUTAHAR2023104828,KAIROUANI2024106762}.
+
+The Mediterranean coastal edge of northern Morocco is a habitat for numerous peatlands with boreal floristic affinities and high conservation value, and wetlands (Muller et al., 2022). Occasional patches of rain-fed trees and scrub crops, which depend on water availability are distributed in the western regions of the country. Rain-fed croplands interspersed with areas of sparse vegetation are visible along the Atlantic Ocean coasts. Sparse herbaceous vegetation comprising a complex pattern mixed with shrubs and thickets. Other land cover types are generally presented by urban areas around cities with artificial surfaces and associated areas, and bare soil areas in desert and unoccupied lands, Figure \ref{fig02}.
+
+In addition to the natural variability of the Rif landscapes, its forest areas are affected by human factors and hazards. Thus, the expansion of agricultural land, forest fires and socio-demographic, economic and urban dynamics negatively affect the mountainous forests of the Rif \cite{Adghir02112018,Boutahar01102024,Jimenez01092002}. In addition, the combination of a hot and humid climate, a diverse relief and contrasting topography of the Rif creates favorable conditions for landslides that present geomorphological risks in Northern Morocco \cite{Dahmani10102024,EsSmairi13122022,Manaouch03032024}.
+
+%----------- section ----------->
+\section{Materials and Methods}
+
+%----------- subsection ----------->
+\subsection{Data}
+
+The spatial analysis is based on two types of data: on the one hand, topographic and land use data obtained from GEBCO, (Figure \ref{fig01}) and FAO, (Figure \ref{fig02}); on the other hand, Landsat 8-9 OLI/TIRS satellite image data covering the bimonthly period 2023: January, March, May, July, September and November, Figure \ref{fig03}.
+
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_03}
+    \end{center}
+    \caption{Landsat images on 2023: (a) – January 26; (b) – March 15; (c) –May 10; (d) – July 29; (e) - September 23; (f) – November 26.}
+    \label{fig03}
+\end{figure}
+
+The L2 data type is OLI\_TIRS\_L2SP with ground control points version 5. The processing software version is LPGS\_15.3.1c for Landsat-8 scenes and LPGS\_16.3.1 for Landsat-9 (2023) scene. The satellite roll angle is zero for Landsat 8 scenes and -0.001 for Landsat 9. The images were taken during the day at Nadir, with cloud cover less than 10\%.
+
+In this work, only multispectral bands with an acquisition resolution of 30 meters were used, except for panchromatic bands with a resolution of 15 m. The combination of multispectral bands is mainly used for the creation of false/true color composites for classification, especially for image visualization. The available data were listed using the search template in "g.list rast".
+
+%----------- subsection ----------->
+\subsection{Workflow}
+
+Mapping of topographic data was carried out using GMT using existing methods \cite{Lemenkova202221,Lemenkova202217,10537274,5369602}, while mapping of land use data was carried out using QGIS. Mapping of land cover maps from remote sensing data is based on satellite image classification methods.
+
+The aim of this approach is to model the data and predict for each pixel a label, i.e. Land Cover Class. Using machine learning methods, these methods are divided into two categories: supervised classification and unsupervised classification. This study involves the use and comparison of these two methods. The image processing process is composed of the following steps, implemented in the form of free and open source modules on GRASS SIG. The code for organising the project and importing data is presented below.
+
+\begin{footnotesize}
+\begin{verbatim}
+# Create the project with new location from raster map 
+(file must contain projection metadata):
+# grass -c myraster.tif /home/user/grassdata/mynewlocation
+grass
+#cd /Users/polinalemenkova/grassdata
+#grass -c LC09_L2SP_179073_20220419_20230421_02_T1_SR_B1.tif 
+/Users/polinalemenkova/grassdata/Morocco
+# ----IMPORT AND PREPROCESSING-------------------------->
+# g.mapset location=Morocco mapset=PERMANENT
+g.list rast
+# importing the image subset with 7 Landsat bands and display the raster map
+r.import input=/Users/polinalemenkova/grassdata/Morocco/
+LC09_L2SP_201036_20230126_20230313_02_T1_SR_B1.TIF 
+output=L9_2023_J_01 extent=region resolution=region --overwrite
+r.import input=/Users/polinalemenkova/grassdata/Morocco/
+LC09_L2SP_201036_20230126_20230313_02_T1_SR_B2.TIF 
+output=L9_2023_J_02 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Morocco/
+LC09_L2SP_201036_20230126_20230313_02_T1_SR_B3.TIF 
+output=L9_2023_J_03 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Morocco/
+LC09_L2SP_201036_20230126_20230313_02_T1_SR_B4.TIF
+ output=L9_2023_J_04 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Morocco/
+LC09_L2SP_201036_20230126_20230313_02_T1_SR_B5.TIF
+ output=L9_2023_J_05 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Morocco/
+LC09_L2SP_201036_20230126_20230313_02_T1_SR_B6.TIF 
+output=L9_2023_J_06 extent=region resolution=region
+r.import input=/Users/polinalemenkova/grassdata/Morocco/
+LC09_L2SP_201036_20230126_20230313_02_T1_SR_B7.TIF
+ output=L9_2023_J_07 extent=region resolution=region
+#
+g.list rast
+# g.remove -f type=raster name=L9_2023_J_J_01
+\end{verbatim}
+\end{footnotesize}
+
+First, the import and preprocessing of six Landsat images was done using the modules 'r.import' that reads the data and 'i.landsat.toar' that converts Landsat 8-9 OLI/TIRS images and transforms the calibrated digital numbers for the reflectance at the top of the atmosphere. In this way, the quality of the images is improved. On the colored composition in "false colors", the vegetation appears in different shades depending on the species, but also on the environmental conditions: geomorphology of the mountain slope, the curvature and the inclination of the slope that affect the shadows on the images, Figure \ref{fig04}.
+
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_04}
+    \end{center}
+    \caption{Landsat 8-9 multispectral images: false and true colour composites.}
+    \label{fig04}
+\end{figure}
+
+The spectral combination calculation integrates different spectral bands of Landsat based on the physical properties of the land covers reflected in the images. Therefore, the spectral bands are useful to improve the discrimination between landscape classes, Figure \ref{fig04}. The vegetation observed on the Atlantic Ocean side appears in darker reds than the surrounding vegetation around the Rif Mountains. The water that absorbs almost all wavelengths is very dark, up to black, while the empty ground surface appears very light, in tones ranging from beige to ochre, Figure \ref{fig04}.
+
+Creation of color composites (Figure \ref{fig04}) was performed based on the Landsat multispectral bands using the 'r.composite' module and visualization of the images using the 'd.rast' module. The estimation of the color composition model aims to better recognize the ten land cover classes representing landscape patches in the Rif Mountains and its surroundings in the images. Modeling and simulation of the images using the principle of color compositions includes 'true color' and 'false color' images, Figure \ref{fig04}. Here, the spectral bands of the images are visualized in several color combinations that are widely used in remote sensing because they are very suitable for studying vegetation and landscape. For example, the combination with band number 5 (infrared, IR) is based on the properties of vegetation that reflect very strongly near-IR radiation.
+
+\begin{footnotesize}
+\begin{verbatim}
+# ----CREATING COLOR COMPOSITES----->
+# false color
+r.composite blue=L9_2023_J_07 green=L9_2023_J_05 red=L9_2023_J_03
+ output=L9_2023_J_753 --overwrite
+d.mon wx0
+d.rast L9_2023_J_753
+d.out.file output=Morocco_753 format=jpg --overwrite
+# false color: NIR band B05 in the red channel, red band B04 in the green 
+channel and green band B03 in the blue channel
+r.composite blue=L9_2023_J_03 green=L9_2023_J_04 red=L9_2023_J_05
+ output=L9_2023_J_345 --overwrite
+d.mon wx0
+d.rast L9_2023_J_345
+d.out.file output=Morocco_345 format=jpg --overwrite
+# true color
+r.composite blue=L9_2023_J_02 green=L9_2023_J_03 red=L9_2023_J_04
+output=L9_2023_J_234 --overwrite
+d.mon wx0
+d.rast L9_2023_J_234
+d.out.file output=Morocco_J_234 format=jpg --overwrite
+\end{verbatim}
+\end{footnotesize}
+
+Machine learning of satellite image processing by GRASS GIS consists of two phases. The first consists of estimating a model from data by automatic clustering. The unsupervised clustering approach groups comparable samples within the same class using the k-means algorithm. The image clustering and classification according to the maximum likelihood algorithm (unsupervised learning) using the 'i.cluster' and 'i.maxlik' modules. The groups, i.e. the clusters are made up of pixels with similar spectral values. The unsupervised classification uses the clustering approach performed using the 'i.cluster' module as explained above.
+
+Unsupervised classification uses the clustering approach performed using the "i.cluster" module. The "i.cluster" generates a signature file and reports the cluster maps, or regions, that were automatically generated using the "k-means" data partitioning algorithm. The GRASS SIG code used for this is the following (example for the 2013 image, repeated for images from all other years using the same technique): "i.cluster group=L8\_2013 subgroup=res\_30m signaturefile=cluster\_L8\_2013 classes=8 reportfile=rep\_clust\_L8\_2013.txt". Therefore, samples within a class are dissimilar from samples in others.
+
+\begin{footnotesize}
+\begin{verbatim}
+# ---Clustering and Classification ---->
+# grouping data by i.group
+# Set computational region to match the scene
+g.region raster=L9_2023_J_01 -p
+i.group group=L9_2023_J subgroup=res_30m \
+input=L9_2023_J_01,L9_2023_J_02,L9_2023_J_03,L9_2023_J_04,
+L9_2023_J_05,L9_2023_J_06,L9_2023_J_07 --overwrite
+# Clustering: generating signature file and report using 
+k-means clustering algorithm
+i.cluster group=L9_2023_J subgroup=res_30m \
+  signaturefile=cluster_L9_2023_J \
+  classes=10 reportfile=rep_clust_L9_2023_J.txt --overwrite
+# Classification by i.maxlik module
+i.maxlik group=L9_2023_J subgroup=res_30m \
+  signaturefile=cluster_L9_2023_J \
+  output=L9_2023_J_cluster_classes reject=L9_2023_J_cluster_reject 
+# Mapping
+d.mon wx0
+g.region raster=L9_2023_J_cluster_classes -p
+r.colors L9_2023_J_cluster_classes color=bcyr
+d.rast L9_2023_J_cluster_classes
+d.legend raster=L9_2023_J_cluster_classes title="26 January 2023" 
+title_fontsize=14 font="Helvetica" fontsize=12 bgcolor=white
+ border_color=white
+d.out.file output=Morocco_2023_Jan format=jpg --overwrite
+# Mapping rejection probability
+d.mon wx1
+g.region raster=L9_2023_J_cluster_classes -p
+r.colors L9_2023_J_cluster_reject color=wave -e
+d.rast L9_2023_J_cluster_reject
+d.legend raster=L9_2023_J_cluster_reject title="26 January 2023" 
+title_fontsize=14 font="Helvetica" fontsize=12 bgcolor=white 
+border_color=white
+d.out.file output=Morocco_2023_reject format=jpg --overwrite
+\end{verbatim}
+\end{footnotesize}
+
+In this way, each land cover class is associated with each cluster. Calculating the pixel rejection probability using accuracy assessment for quality control. With the unsupervised modeling done, the new data obtained is submitted as the training dataset for machine learning to obtain better image classification results. The clustering results are used as observation data available for supervised learning. Thus, the results of this step are used for machine learning as the training dataset.
+
+Subsequently, machine learning processing of images was performed using supervised classification that uses a sequence of modules. The ability of machine learning to model geospatial data relies heavily on the acquisition of training data as the algorithm feeds on the input dataset, so this is an important step. Machine learning for image classification using “r.learn.train” and “r.learn.predict” models.
+
+The algorithm is based on the use of the ‘decision tree’ and ‘extra trees’ classifiers that are integrated into the GRASS GIS module ‘r.learn.train’. Here, the data are labeled, i.e. This is a supervised learning with the technical specificities mentioned in the code below. First, the ‘r.random’ module was used to generate training pixels from a previous classification of the land cover of Morocco. All these algorithms were implemented using the GRASS GIS module ‘r.learn.train’ using the programming code presented below.
+
+\begin{footnotesize}
+\begin{verbatim}
+# MACHINE LEARNING ------>
+# g.list rast
+g.region raster=L9_2023_J_01 -p
+# First, we are going to generate some training pixels from an older (1996) 
+land cover classification:
+r.random input=L9_2023_cluster_classes seed=100 npoints=1000 
+raster=training_pixels --overwrite
+# Next, we create the imagery group with all 
+Landsat-8 OLI/TIRS 7 (2000) bands:
+i.group group=L9_2023_J 
+input=L9_2023_J_01,L9_2023_J_02,L9_2023_J_03,L9_2023_J_04,
+L9_2023_J_05,L9_2023_J_06,L9_2023_J_07 --overwrite
+# Then use these training pixels to perform a classification on 
+recent Landsat - 2022 image:
+#
+# train a decision tree classification model using r.learn.train
+r.learn.train group=L9_2023_J training_map=training_pixels \
+    model_name=DecisionTreeClassifier n_estimators=500 
+    save_model=rf_model.gz --overwrite
+# perform prediction using r.learn.predict
+r.learn.predict group=L9_2023_J load_model=rf_model.gz
+ output=rf_classification --overwrite
+# check raster categories - they are automatically applied 
+to the classification output
+r.category rf_classification
+# copy color scheme from landclass training map to result
+r.colors rf_classification raster=training_pixels
+# display
+d.mon wx0
+d.rast rf_classification
+r.colors rf_classification color=roygbiv -e
+d.legend raster=rf_classification title="Decision Tree: 01/2023" 
+title_fontsize=14 font="Helvetica" fontsize=12 bgcolor=white 
+border_color=white
+d.out.file output=DT_2023_01 format=jpg --overwrite
+\end{verbatim}
+\end{footnotesize}
+
+In the next step, the prediction was performed using the module "r.learn.predict" which was performed in the code: "r.learn.predict group=L8\_2013 load\_model=rf\_model.gz output=rf\_classification". The raster categories were examined using the module "r.category" of GRASS SIG, based on the data automatically applied to the classification output. For this, the following code was used: "r.category rf\_classification". The maps were visualized using the combination of two main modules: "d.rast" which visualizes the map itself and "d.legend" which adds the legend on this map. The images were converted to bitmap format using the module "d.out.file", e.g., "d.out.file output=Maroc\_2013 format=jpg".
+
+\begin{footnotesize}
+\begin{verbatim}
+# train a extra trees classification model using r.learn.train
+r.learn.train group=L9_2023_J training_map=training_pixels \
+   model_name=ExtraTreesClassifier n_estimators=500 
+   save_model=rf_model.gz --overwrite
+# perform prediction using r.learn.predict
+r.learn.predict group=L9_2023_J load_model=rf_model.gz  output=rf_classification --overwrite
+# check raster categories applied to the classification output
+r.category rf_classification
+# copy color scheme from landclass training map to result
+r.colors rf_classification raster=training_pixels
+# display
+d.mon wx0
+d.rast rf_classification
+r.colors rf_classification color=bgyr -e
+d.legend raster=rf_classification title="Extra Tree: 01/2023" 
+title_fontsize=14 font="Helvetica" fontsize=12 bgcolor=white 
+border_color=white
+d.out.file output=ET_2023_01 format=jpg --overwrite
+\end{verbatim}
+\end{footnotesize}
+
+This was used as a basis for machine learning using the following code: “r.random input=L8\_2013\_cluster\_classes seed=100 npoints=1000 raster=training\_pixels”. After that, the “r.learn.train” module was used to train a module using the training map that was created in the previous step by applying the built-in algorithm. The code used is as follows: “r.learn.train group=L8\_2013 training\_map=t\_pixels model\_name=DecisionTreeClassifier n\_estimators=500 save\_model=rf\_model.gz”. For all approaches, the model name was changed using the “model\_name” function and the name of the model in question, e.g., “modelage=RandomForestRegressor”.
+
+Since the pixel labels are discrete (not continuous which requires the use of regression), the classification methods 'decision trees' and 'supplementary trees' were chosen. These machine learning algorithms predict the probability of pixel values suitable for the target class on the image. Therefore, the machine performs a classification of the image pixels into 10 land cover classes on the Rif Mountains. The categorization of the classes was done using the 'r.category' module of GRASS GIS. 
+
+Finally, the visualization of images using the auxiliary graphic modules of GRASS GIS for cartographic processing: 'd.mon', 'd.rast', 'r.colors' and 'd.legend'. The images were saved as bitmap files using the module 'd.out.file'. The calculation and estimation of classification accuracy are done by the function 'reject' for the evaluation of the probability of the percentage of correctly classified pixels on the image. The evaluation of image processing quality and algorithm performance are done by GRASS GIS.
+
+%----------- section ----------->
+\section{Results and Discussion}
+
+This section presents the result of satellite image classification using three approaches: unsupervised classification and supervised classification by machine learning methods using two approaches - "Decision tree classifier" and "Extra tree classifier". Figure \ref{fig05} shows the images generated using the clustering classification method, which illustrate the land cover changes with a bi-monthly time interval, Table \ref{tab01}.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{| p{1.5cm} | X | X | X | X | X | X | X | X | X | X | }
+  \toprule
+   Class & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+   \midrule
+    January & 766 & 465 & 554 & 736 & 1031 & 785 & 462 & 1016 & 646 & 149 \\
+    March & 720 & 341 & 696 & 673 & 1060 & 791 & 587 & 821 & 720 & 203 \\
+    May & 742 & 348 & 545 & 449 & 904 & 912 & 905 & 722 & 645 & 501 \\
+    July & 766 & 465 & 554 & 736 & 1031 & 785 & 462 & 1016 & 646 & 149 \\
+    September & 668 & 424 & 674 & 318 & 793 & 791 & 1099 & 1023 & 683 & 222 \\
+    November & 781 & 483 & 701 & 675 & 1097 & 429 & 744 & 833 & 734 & 225 \\
+    \bottomrule
+\end{tabularx}
+\caption{Bimonthly variations of in Rif Mountains by pixels over 10 land cover classes in 2023 in two (cold/hot) different seasons: 1) January, March and May; 2) July, September and November}\label{tab01}
+\end{table}
+
+Figure \ref{fig06} shows that the classification using the “decision tree classifier” method improved the results since the machine learning results are more robust and stable compared to the unsupervised classification. The January scene shows the least plant activity which gradually increases from March to May and decreases respectively after the hot summer period until November.
+
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_05}
+    \end{center}
+    \caption{Satellite image classification using unsupervised classification clustering methods and the GRASS GIS 'MaxLike' approach.}
+    \label{fig05}
+\end{figure}
+
+On the one hand, vegetation varied seasonally in the Rif region according to the natural dynamics of the phenological cycle during different calendar months. However, compared to other land cover types, the mosaic vegetation types of deciduous forests developed partially and differently for both algorithms, with more density and a homogeneous pattern across the entire study area.
+
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_06}
+    \end{center}
+    \caption{Results of satellite image classification using supervised machine learning method with GRASS GIS 'Decision Tree' algorithm.}
+    \label{fig06}
+\end{figure}
+
+On the other hand, technical improvements of the parameters that differ in various algorithms ‘MaxLike’, ‘DecisionTreeClassifier’ and ‘ExtraTreesClassifier’ allow to better visualize land cover classes on the images. Thus, the most complex landscape patches with high heterogeneity can be better distinguished, including sparsely distributed and densely distributed vegetation segments. Here, the rejection threshold map contains the index of a confidence level calculated for each classified pixel in the classified image of the 10 land cover classes in the Morocco region. Confidence intervals are defined and the rejection map is visualized with lower values meaning 'keep the correctly classified pixel' and higher values meaning “reject a misclassified pixel that could belong to another class category”. Thus, this map identifies cells in the classified raster image that have a low probability, i.e. a high rejection index, of being correctly assigned to the target class.
+
+\begin{equ}[!ht]
+\begin{equation}
+\scriptsize
+\begin{vmatrix}
+   & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.7 & 0 &  &  &  &  &  &  &  &  \\
+3 & 3.3 & 1.1 & 0 &  &  &  &  &  &  &  \\
+4 & 3.3 & 1.0 & 0.7 & 0 &  &  &  &  &  &  \\
+5 & 4.2 & 1.9 & 0.9 & 1.2 & 0 &  &  &  &  &  \\
+6 & 3.9 & 1.6 & 1.2 & 0.8 & 1.0 & 0 &  &  &  &  \\  
+7 & 3.5 & 1.8 & 1.6 & 1.2 & 1.2 & 0.6 & 0 &  &  &  \\  
+8 & 4.6 & 2.3 & 1.5 & 1.7 & 0.7 & 1.2 & 1.1 & 0 &  &  \\
+9 & 5.0 & 3.0 & 2.2 & 2.5 & 1.5 & 1.9 & 1.6 & 0.9 & 0 &  \\   
+10 & 3.5 & 2.6 & 2.2 & 2.3 & 1.8 & 2.0 & 1.7 & 1.4 & 0.9 & 0 \\          
+\end{vmatrix}
+ %
+\hspace{3pt}
+\begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 2.5 & 0 &  &  &  &  &  &  &  &  \\
+3 & 3.0 & 1.1 & 0 &  &  &  &  &  &  &  \\
+4 & 3.5 & 1.3 & 0.6 & 0 &  &  &  &  &  &  \\
+5 & 4.3 & 2.2 & 0.9 & 0.9 & 0 &  &  &  &  &  \\
+6 & 4.7 & 2.6 & 1.3 & 1.1 & 0.7 & 0 &  &  &  &  \\  
+7 & 5.1 & 3.1 & 1.7 & 1.7 & 1.0 & 0.8 & 0 &  &  &  \\  
+8 & 5.4 & 3.8 & 2.3 & 2.3 & 1.7 & 1.1 & 1.0 & 0 &  &  \\
+9 & 5.7 & 3.8 & 2.5 & 2.4 & 1.9 & 1.5 & 1.0 & 0.8 & 0 &  \\   
+10 & 5.5 & 4.2 & 3.0 & 2.9 & 2.6 & 2.0 & 1.9 & 1.1 & 1.1 & 0 \\              
+\end{vmatrix} 
+\end{equation}
+\caption{Bimonthly class separability matrices between 10 classes of land cover types in Rif Mountains, Morocco: January and March 2023 (1)}
+\end{equ}
+
+\begin{equ}[!ht]
+\begin{equation}
+\scriptsize
+\begin{vmatrix}
+   & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 2.6 & 0 &  &  &  &  &  &  &  &  \\
+3 & 4.0 & 0.9 & 0 &  &  &  &  &  &  &  \\
+4 & 4.5 & 1.7 & 0.9 & 0 &  &  &  &  &  &  \\
+5 & 4.4 & 1.3 & 0.7 & 1.1 & 0 &  &  &  &  &  \\
+6 & 4.0 & 1.5 & 1.2 & 1.7 & 0.8 & 0 &  &  &  &  \\  
+7 & 5.0 & 2.1 & 1.4 & 1.0 & 1.0 & 1.2 & 0 &  &  &  \\  
+8 & 5.5 & 2.2 & 1.4 & 0.6 & 1.3 & 1.9 & 0.7 & 0 &  &  \\
+9 & 5.7 & 3.0 & 2.2 & 1.4 & 2.2 & 2.6 & 1.2 & 0.9 & 0 &  \\   
+10 & 5.2 & 3.3 & 2.7 & 2.2 & 2.6 & 2.9 & 1.9 & 1.7 & 1.1 & 0 \\          
+\end{vmatrix}
+ %
+\hspace{3pt}
+\begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.7 & 0 &  &  &  &  &  &  &  &  \\
+3 & 3.3 & 1.1 & 0 &  &  &  &  &  &  &  \\
+4 & 3.3 & 1.0 & 0.7 & 0 &  &  &  &  &  &  \\
+5 & 4.2 & 1.9 & 0.9 & 1.2 & 0 &  &  &  &  &  \\
+6 & 3.9 & 1.6 & 1.2 & 0.8 & 1.0 & 0 &  &  &  &  \\  
+7 & 3.5 & 1.8 & 1.6 & 1.2 & 1.2 & 0.6 & 0 &  &  &  \\  
+8 & 4.6 & 2.3 & 1.5 & 1.7 & 0.7 & 1.2 & 1.1 & 0 &  &  \\
+9 & 5.0 & 3.0 & 2.2 & 2.5 & 1.5 & 1.9 & 1.6 & 0.9 & 0 &  \\   
+10 & 3.5 & 2.6 & 2.2 & 2.3 & 1.8 & 2.0 & 1.7 & 1.4 & 0.9 & 0 \\              
+\end{vmatrix} 
+\end{equation}
+\caption{Bimonthly class separability matrices between 10 classes of land cover types in Rif Mountains, Morocco: May and July 2023 (2).}
+\end{equ}
+
+\begin{equ}[!ht]
+\begin{equation}
+\scriptsize
+\begin{vmatrix}
+   & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 2.8 & 0 &  &  &  &  &  &  &  &  \\
+3 & 4.8 & 1.1 & 0 &  &  &  &  &  &  &  \\
+4 & 3.6 & 1.0 & 0.6 & 0 &  &  &  &  &  &  \\
+5 & 6.3 & 2.1 & 1.0 & 1.1 & 0 &  &  &  &  &  \\
+6 & 6.8 & 2.3 & 1.3 & 1.1 & 0.6 & 0 &  &  &  &  \\  
+7 & 8.2 & 3.1 & 2.1 & 1.7 & 1.1 & 0.8 & 0 &  &  &  \\  
+8 & 8.6 & 3.6 & 2.6 & 2.1 & 1.8 & 1.4 & 0.7 & 0 &  &  \\
+9 & 8.6 & 4.0 & 3.2 & 2.5 & 2.5 & 2.1 & 1.5 & 0.8 & 0 &  \\   
+10 & 7.1 & 4.1 & 3.4 & 2.9 & 2.9 & 2.6 & 2.2 & 1.6 & 1.0 & 0 \\          
+\end{vmatrix}
+ %
+\hspace{3pt}
+\begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 2.0 & 0 &  &  &  &  &  &  &  &  \\
+3 & 3.3 & 1.0 & 0 &  &  &  &  &  &  &  \\
+4 & 3.9 & 1.6 & 0.9 & 0 &  &  &  &  &  &  \\
+5 & 5.0 & 2.3 & 1.3 & 0.8 & 0 &  &  &  &  &  \\
+6 & 3.6 & 1.6 & 0.8 & 1.0 & 0.9 & 0 &  &  &  &  \\  
+7 & 5.5 & 2.8 & 1.8 & 1.6 & 0.8 & 1.0 & 0 &  &  &  \\  
+8 & 6.0 & 3.2 & 2.2 & 1.8 & 1.0 & 1.5 & 0.7 & 0 &  &  \\
+9 & 6.1 & 3.6 & 2.8 & 2.6 & 1.8 & 1.9 & 1.3 & 1.0 & 0 &  \\   
+10 & 5.3 & 3.8 & 3.2 & 3.1 & 2.6 & 2.5 & 2.2 & 2.0 & 1.2 & 0 \\              
+\end{vmatrix} 
+\end{equation}
+\caption{Bimonthly class separability matrices between 10 classes of land cover types in Rif Mountains, Morocco: September and November 2023 (3).}
+\end{equ}
+
+Figure 7 shows the land cover type patterns over the Rif Mountains and surrounding areas, defined using an improved machine learning algorithm.
+
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_07}
+    \end{center}
+    \caption{Results of satellite image classification using supervised machine learning method with GRASS GIS 'Extra Tree' algorithm.}
+    \label{fig07}
+\end{figure}
+
+Compared to the previous results in Figure \ref{fig05} and Figure \ref{fig06}, the results of the Extra tree are not quite similar for the classification maps based on the “Decision tree” (Figure \ref{fig06}) and “Extra tree” algorithms (Figure \ref{fig07}), because they rely on the extremely random trees method. The “Extra tree” algorithm is similar to the random forest algorithm in its nature, but it processes images much faster. Therefore, technically, this algorithm is an improved ensemble supervised machine learning method.
+
+However, this algorithm creates many decision trees using random sampling of pixels for each tree. The most important and unique feature of the “Extra trees” algorithm is that it randomly selects a pixel division value. Therefore, compared with the “decision tree” algorithms, the land cover types are diverse and uncorrelated. The best performance among the three image processing methods is demonstrated by the “decision tree” algorithms which divide the image into land cover classes with precision and detail. The accuracy assessment is presented in Figure \ref{fig08} and computational results available in Table \ref{tab03} and Table \ref{tab04}.
+
+\begin{longtable}{@{\extracolsep{\fill}}p{1.5cm}cccccccc@{}}
+\caption{Bimonthly evaluation of the class means of Digital Numbers (DN) computed for pixels assigned to 10 land cover classes in landscapes of Rif Mountains, north Morocco. Evaluated each multispectral band (1 to 7) of Landsat 8-9 OLI/TIRS. Period: 2023, January to May.} \label{tab03}\\
+\hline \textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7} \\ \hline 
+\endfirsthead
+
+\multicolumn{5}{c}%
+{{\tablename\ \thetable{} -- continued from previous page}} \\
+\textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7}  \\ \hline 
+\endhead
+
+\hline \multicolumn{8}{r}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+%\bf{2019} &  &  &  &  &  &  & \\
+\multicolumn{8}{| c |}{\textbf{2023: January}}\\
+\hline
+1 & 8053.66 & 8105.74 & 7961.36 & 7451.51 & 7386.15 & 7411.52 & 7385.87 \\
+2 & 7529.44 & 7754.46 & 8346.18 & 8318.72 & 11431.1 & 10065.3 & 8996.52 \\
+3 & 8054.51 & 8324.72 & 9136.1 & 9317.05 & 12308.5 & 12725.3 & 11052.1 \\
+4 & 7889.8 & 8102.02 & 8942.29 & 8745.57 & 14901.1 & 12282.7 & 10135 \\
+5 & 8332 & 8667.33 & 9728.08 & 10061.3 & 14289.8 & 14818.8 & 12637.9 \\
+6 & 8110.13 & 8324.27 & 9467.21 & 9012.78 & X17982.6& 13440.9 & 10707.4 \\
+7 & 8251.2 & 8447.13 & 9831.94 & 9044.77 & 21802.8 & 13717.8 & 10608.9 \\
+8 & 8640.53 & 9039.94 & 10407.5 & 10794.4 & 16840.5 & 16286.3 & 13653.7 \\
+9 & 9111.71 & 9625.79 & 11316.9 & 12294.1 & 17724.7 & 19083.2 & 16430 \\
+10 & 11270 & 12124 & 14516 & 16218.7 & 21505.9 & 23336.4 & 20483 \\
+\hline
+%\bf{2022} &  &  &  & & & & \\
+\multicolumn{8}{| c |}{\textbf{2023: March}}\\
+\hline
+1 & 7732.78 & 7928.37 & 7997.69 & 7540.35 & 7530.62 & 7850.57 & 7839.92 \\
+2 & 7850.68 & 8119.44 & 9096.92 & 8986.22 & 16313.3 & 12929.6 & 10370.1 \\
+3 & 8406.34 & 8821.78 & 10011.9 & 10547.6 & 15377.5 & 14966.2 & 12509.7 \\
+4 & 8377.33 & 8825.2 & 10246.8 & 10459 & 19450.9 & 15628.6 & 12195.9 \\
+5 & 8777.26 & 9318.35 & 10778.5 & 11790.6 & 16488.5 & 17202.7 & 14298.8 \\
+6 & 9050.82 & 9764.11 & 11495.9 & 12894.6 & 18940.7 & 17954 & 14120.4 \\
+7 & 9129.74 & 9761.09 & 11407.2 & 12937.6 & 17616.1 & 19787.9 & 16566.3 \\
+8 & 9848.06 & 10823.1 & 12951.4 & 15075.9 & 19854.8 & 20511.1 & 16312.7 \\
+9 & 9570.95 & 10302.4 & 12240.4 & 14420.2 & 19123.6 & 22705 & 19360.4 \\
+10 & 10759 & 11957.4 & 14571.2 & 17344.9 & 21903.1 & 24000.4 & 19583.5 \\
+\hline
+
+%\bf{2023} &  &  &  & & & & \\
+\multicolumn{8}{| c |}{\textbf{2023: May}}\\
+\hline
+1 & 8111.51 & 8199.08 & 8100.88 & 7465.42 & 7287.35 & 7335.55 & 7330.84 \\
+2 & 7565.9 & 7794.02 & 8480.23 & 8399.37 & 13105.3 & 11135.9 & 9540.2 \\
+3 & 7941.53 & 8209.27 & 9135.12 & 9131.33 & 14663.5 & 13138.1 & 10966.2 \\
+4 & 8278.6 & 8635.24 & 9757.47 & 10183.6 & 14710.6 & 15182 & 12997.8 \\
+5 & 8007.61 & 8238.4 & 9379.12 & 9007.12 & 18137.6 & 13349.7 & 10649.6 \\
+6 & 7959.3 & 8113.15 & 9263.84 & 8488.51 & 22413.9 & 12764.6 & 9831.97 \\
+7 & 8460.35 & 8799.31 & 10364.7 & 10092.9 & 20827.9 & 15638.7 & 12351.6 \\
+8 & 8552.87 & 8939.44 & 10306.6 & 10660.9 & 17349.2 & 16382.3 & 13624.4 \\
+9 & 8999.75 & 9517.87 & 11173.8 & 12159.9 & 17889.8 & 18838.8 & 16259.8 \\
+10 & 10309.3 & 11076.4 & 13413.5 & 15174.4 & 20565.5 & 22691.1 & 20127.9 \\
+\hline
+\end{longtable}
+
+\begin{longtable}{@{\extracolsep{\fill}}p{1.5cm}cccccccc@{}}
+\caption{Bimonthly evaluation of the class means of Digital Numbers (DN) computed for pixels assigned to 10 land cover classes in landscapes of Rif Mountains, north Morocco. Evaluated each multispectral band (1 to 7) of Landsat 8-9 OLI/TIRS. Period: 2023, July to November.} \label{tab04}\\
+\hline \textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7} \\ \hline 
+\endfirsthead
+
+\multicolumn{5}{c}%
+{{\tablename\ \thetable{} -- continued from previous page}} \\
+\textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7}  \\ \hline 
+\endhead
+
+\hline \multicolumn{8}{r}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+%\bf{2019} &  &  &  &  &  &  & \\
+\multicolumn{8}{| c |}{\textbf{2023: July}}\\
+\hline
+1 & 7500.81 & 7646.92 & 7722.75 & 7376.19 & 7464.38 & 7798.77 & 7755.02 \\
+2 & 8127.96 & 8540.32 & 9609.1 & 9705.24 & 15267.4 & 13436.5 & 11015.4 \\
+3 & 8252.89 & 8754.25 & 10217.3 & 10220.6 & 19793.6 & 15491.7 & 12155.2 \\
+4 & 8632.51 & 9160.58 & 10487.1 & 11145.4 & 15532 & 15921.1 & 13380.2 \\
+5 & 8846.49 & 9479.29 & 11046.4 & 11830.1 & 17492.5 & 17638.3 & 14481.8 \\
+6 & 9201.59 & 9873.76 & 11411 & 12488 & 15585.3 & 18152.4 & 15358.2 \\
+7 & 9293.07 & 10015.1 & 11685.1 & 13029.5 & 17033.7 & 19868.5 & 16751.3 \\
+8 & 10080.1 & 10993.2 & 12891.2 & 14295.8 & 17321.4 & 20518.4 & 17159.1 \\
+9 & 9985.18 & 10842.3 & 12815.2 & 14613.6 & 18222.5 & 22332.9 & 19188 \\
+10 & 10968.9 & 12001.6 & 14474.9 & 16602.5 & 19960 & 24353.3 & 21345.3 \\
+\hline
+%\bf{2022} &  &  &  & & & & \\
+\multicolumn{8}{| c |}{\textbf{2023: September}}\\
+\hline
+1 & 8057.65 & 8039.26 & 7748.32 & 7366.06 & 7277.01 & 7381.23 & 7381.57 \\
+2 & 7726.42 & 7990.22 & 8786.58 & 8828.21 & 14163.6 & 12041.9 & 10029.1 \\
+3 & 8247.64 & 8609.77 & 9618.74 & 10150.4 & 14170.5 & 14536.1 & 12265.5 \\
+4 & 8313.97 & 8631 & 9791.5 & 9795.11 & 18703.7 & 14820.3 & 11736 \\
+5 & 8759.38 & 9204.49 & 10345.5 & 11259.8 & 13905.7 & 16652 & 14282 \\
+6 & 8851.15 & 9357.15 & 10724.4 & 11653 & 16282.7 & 17375 & 14521.9 \\
+7 & 9289.65 & 9878.35 & 11350.2 & 12612.5 & 15641.1 & 18960.8 & 16187 \\
+8 & 9656.35 & 10336.8 & 12032.2 & 13588.6 & 16911.5 & 20589.9 & 17615.2 \\
+9 & 10122.7 & 10879.8 & 12859.4 & 14816 & 18280.5 & 22704 & 19758.4 \\
+10 & 11172.9 & 12165.6 & 14822.7 & 17351.5 & 20822.6 & 25700.6 & 22812.4 \\
+\hline
+
+%\bf{2023} &  &  &  & & & & \\
+\multicolumn{8}{| c |}{\textbf{2023: November}}\\
+\hline
+1 & 7982.57 & 7976.11 & 7746.84 & 7371.42 & 7374.01 & 7416.82 & 7387.47 \\
+2 & 7606.96 & 7848.7 & 8421.42 & 8450.72 & 11883.1 & 10576.5 & 9345.26 \\
+3 & 8009.92 & 8271.76 & 9076.5 & 9113.51 & 14879.4 & 13007.5 & 10800.5 \\
+4 & 8443.29 & 8714.75 & 9430.96 & 9844.52 & 11725.6 & 13884.5 & 12143.8 \\
+5 & 8688.21 & 9043.79 & 10003.6 & 10602.4 & 13637.5 & 15634.6 & 13570.2 \\
+6 & 8371.09 & 8671.7 & 9834.34 & 9692.7 & 18571.4 & 14782.6 & 11792.6 \\
+7 & 8804.19 & 9223.59 & 10496.4 & 11154 & 16783.6 & 17135.9 & 14444 \\
+8 & 9160.99 & 9627.78 & 10860.9 & 11853.9 & 14513.2 & 17931.3 & 15848 \\
+9 & 9542.27 & 10134.7 & 11817.5 & 13258.5 & 17309 & 20476.2 & 18053.6 \\
+10 & 11042.5 & 12012.4 & 14554.4 & 16720.1 & 20561.1 & 25084.9 & 22211.2 \\
+\hline
+\end{longtable}
+
+Visualization of Earth landscapes using cartographic methods has many approaches, one of them is the use of remote sensing data. This method uses satellite images as input data for their processing and classification. Typically, cartography relies on the use of traditional GIS methods that can produce a visualization using a defined workflow dependent on a particular software. The detection of land cover types depicted on these maps is perceptible to the human eye depending on the spatial and temporal resolution of the remote sensing data. However, the use of automation and machine learning approaches facilitates image processes, thanks to a more objective and accurate classification of satellite images.
+
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_08}
+    \end{center}
+    \caption{Accuracy evaluation using computed correctly classified pixels (\%), GRASS GIS.}
+    \label{fig08}
+\end{figure}
+
+The maps describing land use in the Rif mountain region are scientific and decision-making tools for Moroccan authorities and educational institutions. The images processed by GRASS GIS methods can be used in research work as input data for modeling systems of bimonthly vegetation cycles in the geomorphological context of the Rif. In addition, it can also be used for operational monitoring of bimonthly vegetation changes in northern Morocco, to apply research recommendations that require precise knowledge of the Rif territories.
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{| p{1.7cm} | X | X | X | X | X | X | }
+  \toprule
+   Iteration & 01/2023 & 03/2023 & 05/2023 & 07/2023 & 09/2023 & 11/2023  \\
+   \midrule
+    Iteration 1 & 74.15\% & 81.46\% & 58.44\% & 74.15\% & 81.12\% & 81.47\% \\
+    Iteration 2 & 77.52\% & 88.60\% & 74.76\% & 77.52\% & 88.74\% & 78.51\% \\
+    Iteration 3 & 90.02\% & 88.06\% & 89.85\% & 90.02\% & 92.05\% & 85.56\% \\
+    Iteration 4 & 93.59\% & 93.42\% & 94.81\% & 93.59\% & 94.67\% & 92.87\% \\
+    Iteration 5 & 95.31\% & 95.40\% & 96.52\% & 95.31\% & 95.25\% & 96.37\% \\
+    Iteration 6 & 96.32\% & 95.94\% & 96.85\% & 96.32\% & 96.21\% & 97.33\% \\
+    Iteration 7 & 97.11\% & 96.88\% & 97.34\% & 97.11\% & 97.09\% & 97.66\% \\
+    Iteration 8 & 97.05\% & 97.78\% & 97.60\% & 97.05\% & 97.19\% & 97.97\% \\
+    Iteration 9 & 97.55\% & 98.16\% & 98.03\% & 97.55\% & 97.46\% & 98.24\% \\
+    \midrule
+    Convergence & 98.1\% & 98.2\% & 98.0\% & 98.1\% & 98.0\% & 98.2\% \\
+    \bottomrule
+\end{tabularx}
+\caption{Computed points stability for iterations during classification and convergence of classes: January, March, May, July, September and November 2023}\label{tabA06}
+\end{table}
+
+%----------- section ----------->
+\section{Conclusion}
+
+The general objective of this paper aims to improve the production of land cover maps in northern Morocco from machine learning by GRASS GIS (the algorithms 'decision trees' and 'Extra trees') and time series of Landsat 8-9 OLI/TIRS satellite images. In particular, this paper focuses on the comparison of unsupervised and supervised classification (clustering) of remote sensing data. At the same time, in the paradigm of information processing systems, the emphasis is on the development of methods. Therefore, the specific objective of this paper aims to improve land cover mapping in northern Morocco from time series of Landsat satellite images using machine learning methods by GRASS GIS and cartographic scripts.
+
+Two challenges have been identified in this work. The first concerns the technical choice of the classification algorithm (supervised “DecisionTreeClassifier” and “ExtraTreesClassifier” vs unsupervised clustering by MaxLike) using GRASS GIS, while the second concerns the consideration of the identification of seasonal landscape dynamics in the Rif Mountains of Morocco using monitoring data from January to November 2023 and the relationship between vegetation and mountain geomorphology.
+
+This paper demonstrated the implementation of the GRASS GIS machine learning approach to build an object-based classification workflow of six multispectral satellite images covering the northern region of Morocco, in the Rif Mountains. There are several applications of the presented results and the GRASS GIS satellite image processing methods described in this paper. The land cover in the northern region of Morocco presents the ecological, vegetal and geological cover of the land surface.
+
+%----------- section ----------->
+%\authorcontributions{Supervision, conceptualization, methodology, software, resources, funding acquisition, and project administration, writing---original draft preparation, methodology, software, data curation, visualization, formal analysis, validation, writing---review and editing, and investigation, P.L.}
+
+%\funding{The publication was funded by the Editorial Office of Geomatics, Multidisciplinary Digital Publishing Institute (MDPI), by providing 100\% discount for the APC of this manuscript.}
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\dataavailability{Not applicable} 
+
+%\acknowledgments{The authors thank the reviewers for reading and review of this manuscript.}
+
+\conflictsofinterest{The authors declare no conflict of interest.} 
+
+\abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:\\
+
+\noindent 
+\begin{tabular}{@{}ll}
+DTC & Decision Tree Classifier \\
+ETC & Extra Trees Classifier \\
+GRASS & Geographic Resources Analysis Support System \\
+GIS & Geographic Information System \\
+Landsat OLI/TIRS & Landsat Operational Land Imager and Thermal Infrared Sensor  \\
+GEBCO & General Bathymetric Chart of the Oceans \\
+GMT & Generic Mapping Tools \\
+QGIS & Quantum Geographic Information System \\
+ML & Machine Learning \\
+RS & Remote Sensing \\
+SWIR & Shortwave Infrared \\
+NIR & Near Infrared \\
+USGS & United States Geological Survey  \\
+WGS84 & World Geodetic System 84 \\
+\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optional
+\appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
+\appendixstart
+\appendix
+%--------------------------->
+\section[\appendixname~\thesection]{Initial means for classes of pixels in each multispectral band of the Landsat OLI/TIRS satellite images}
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{| p{1.5cm} | X | X | X | X | X | X | X | }
+  \toprule
+   Class & Band 1 & Band 2 & Band 3 & Band 4 & Band 5 & Band 6 & Band 7  \\
+   \midrule
+    Class 1 & 7353.24 & 7533.21 & 8177.38 & 7818.66 & 10987.1 & 10158.3 & 8739.9 \\
+    Class 2 & 7569.99 & 7774.52 & 8500.84 & 8237.08 & 11888.8 & 10959.1 & 9396.37 \\
+    Class 3 & 7786.75 & 8015.83 & 8824.3 & 8655.49 & 12790.5 & 11759.9 & 10052.8 \\
+    Class 4 & 8003.51 & 8257.14 & 9147.76 & 9073.91 & 13692.2 & 12560.7 & 10709.3 \\
+    Class 5 & 8220.27 & 8498.45 & 9471.21 & 9492.32 & 14593.9 & 13361.5 & 11365.8 \\
+    Class 6 & 8437.03 & 8739.76 & 9794.67 & 9910.73 & 15495.6 & 14162.3 & 12022.2 \\
+    Class 7 & 8653.78 & 8981.07 & 10118.1 & 10329.1 & 16397.3 & 14963.1 & 12678.7 \\
+    Class 8 & 8870.54 & 9222.38 & 10441.6 & 10747.6 & 17299 & 15763.9 & 13335.2 \\
+    Class 9 & 9087.3 & 9463.69 & 10765 & 11166 & 18200.8 & 16564.7 & 13991.6 \\
+    Class 10 & 9304.06 & 9705 & 11088.5 & 11584.4 & 19102.5 & 17365.5 & 14648.1 \\
+    \bottomrule
+\end{tabularx}
+\caption{January 2023: initial means for each multispectral band of Landsat OLI/TIRS images}\label{tabA01}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{| p{1.5cm} | X | X | X | X | X | X | X | }
+  \toprule
+   Class & Band 1 & Band 2 & Band 3 & Band 4 & Band 5 & Band 6 & Band 7  \\
+   \midrule
+    Class 1 & 8036.12 & 8397.21 & 9295.02 & 9561.14 & 13138.1 & 12962.9 & 10897.1 \\
+    Class 2 & 8246.35 & 8665.51 & 9702.28 & 10172.8 & 14019.7 & 13972.2 & 11692.2 \\
+    Class 3 & 8456.57 & 8933.81 & 10109.5 & 10784.5 & 14901.3 & 14981.5 & 12487.3 \\
+    Class 4 & 8666.8 & 9202.11 & 10516.8 & 11396.2 & 15783 & 15990.8 & 13282.5 \\
+    Class 5 & 8877.03 & 9470.41 & 10924.1 & 12007.9 & 16664.6 & 17000.2 & 14077.6 \\
+    Class 6 & 9087.26 & 9738.71 & 11331.3 & 12619.6 & 17546.2 & 18009.5 & 14872.7 \\
+    Class 7 & 9297.49 & 10007 & 11738.6 & 13231.3 & 18427.9 & 19018.8 & 15667.8 \\
+    Class 8 & 9507.72 & 10275.3 & 12145.8 & 13842.9 & 19309.5 & 20028.1 & 16463 \\
+    Class 9 & 9717.94 & 10543.6 & 12553.1 & 14454.6 & 20191.1 & 21037.4 & 17258.1 \\
+    Class 10 & 9928.17 & 10811.9 & 12960.4 & 15066.3 & 21072.7 & 22046.7 & 18053.2 \\
+    \bottomrule
+\end{tabularx}
+\caption{March 2023: initial means for each multispectral band of Landsat OLI/TIRS satellite images}\label{tabA02}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{| p{1.5cm} | X | X | X | X | X | X | X | }
+  \toprule
+   Class & Band 1 & Band 2 & Band 3 & Band 4 & Band 5 & Band 6 & Band 7  \\
+   \midrule
+    Class 1 & 7598.78 & 7764.07 & 8434.53 & 7941.99 & 12295.6 & 10618.7 & 8849.61 \\
+    Class 2 & 7754.07 & 7949.13 & 8718.98 & 8335.56 & 13270.4 & 11401 & 9511.46 \\
+    Class 3 & 7909.36 & 8134.19 & 9003.43 & 8729.14 & 14245.2 & 12183.3 & 10173.3 \\
+    Class 4 & 8064.65 & 8319.25 & 9287.89 & 9122.72 & 15219.9 & 12965.7 & 10835.2 \\
+    Class 5 & 8219.95 & 8504.31 & 9572.34 & 9516.29 & 16194.7 & 13748 & 11497 \\
+    Class 6 & 8375.24 & 8689.37 & 9856.79 & 9909.87 & 17169.5 & 14530.3 & 12158.8 \\
+    Class 7 & 8530.53 & 8874.43 & 10141.2 & 10303.4 & 18144.3 & 15312.6 & 12820.7 \\
+    Class 8 & 8685.82 & 9059.49 & 10425.7 & 10697 & 19119.1 & 16095 & 13482.5 \\
+    Class 9 & 8841.12 & 9244.55 & 10710.1 & 11090.6 & 20093.9 & 16877.3 & 14144.4 \\
+    Class 10 & 8996.41 & 9429.61 & 10994.6 & 11484.2 & 21068.7 & 17659.6 & 14806.2 \\
+    \bottomrule
+\end{tabularx}
+\caption{May 2023: initial means for each multispectral band of Landsat OLI/TIRS satellite images}\label{tabA03}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{| p{1.5cm} | X | X | X | X | X | X | X | }
+  \toprule
+   Class & Band1 & Band 2 & Band 3 & Band 4 & Band 5 & Band 6 & Band 7  \\
+   \midrule
+    Class 1 & 8146.96 & 8572.74 & 9528.06 & 9871.64 & 12802.2 & 13459.3 & 11517.8 \\
+    Class 2 & 8370.6 & 8848.08 & 9926.18 & 10412.8 & 13530.9 & 14431.9 & 12322.4 \\
+    Class 3 & 8594.23 & 9123.41 & 10324.3 & 10954 & 14259.6 & 15404.5 & 13127.1 \\
+    Class 4 & 8817.87 & 9398.75 & 10722.4 & 11495.2 & 14988.3 & 16377.2 & 13931.7 \\
+    Class 5 & 9041.5 & 9674.09 & 11120.5 & 12036.4 & 15717.1 & 17349.8 & 14736.3 \\
+    Class 6 & 9265.14 & 9949.43 & 11518.6 & 12577.6 & 16445.8 & 18322.4 & 15541 \\
+    Class 7 & 9488.77 & 10224.8 & 11916.7 & 13118.9 & 17174.5 & 19295.1 & 16345.6 \\
+    Class 8 & 9712.41 & 10500.1 & 12314.9 & 13660.1 & 17903.2 & 20267.7 & 17150.3 \\
+    Class 9 & 9936.04 & 10775.4 & 12713 & 14201.3 & 18631.9 & 21240.3 & 17954.9 \\
+    Class 10 & 10159.7 & 11050.8 & 13111.1 & 14742.5 & 19360.6 & 22212.9 & 18759.6 \\
+    \bottomrule
+\end{tabularx}
+\caption{July 2023: initial means for each multispectral band of Landsat OLI/TIRS satellite images}\label{tabA04}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{| p{1.5cm} | X | X | X | X | X | X | X | }
+  \toprule
+   Class & Band1 & Band 2 & Band 3 & Band 4 & Band 5 & Band 6 & Band 7  \\
+   \midrule
+    Class 1 & 8037.45 & 8299.79 & 8964.58 & 9252.55 & 11892.9 & 12555.5 & 10819.7 \\
+    Class 2 & 8252.53 & 8565.39 & 9363.68 & 9802.02 & 12631.3 & 13569.5 & 11680.2 \\
+    Class 3 & 8467.62 & 8830.99 & 9762.77 & 10351.5 & 13369.8 & 14583.6 & 12540.8 \\
+    Class 4 & 8682.7 & 9096.59 & 10161.9 & 10901 & 14108.2 & 15597.6 & 13401.3 \\
+    Class 5 & 8897.79 & 9362.19 & 10561 & 11450.4 & 14846.6 & 16611.6 & 14261.9 \\
+    Class 6 & 9112.87 & 9627.78 & 10960 & 11999.9 & 15585.1 & 17625.6 & 15122.4 \\
+    Class 7 & 9327.96 & 9893.38 & 11359.1 & 12549.4 & 16323.5 & 18639.6 & 15983 \\
+    Class 8 & 9543.04 & 10159 & 11758.2 & 13098.9 & 17061.9 & 19653.6 & 16843.5 \\
+    Class 9 & 9758.13 & 10424.6 & 12157.3 & 13648.3 & 17800.4 & 20667.6 & 17704.1 \\
+    Class 10 & 9973.21 & 10690.2 & 12556.4 & 14197.8 & 18538.8 & 21681.7 & 18564.6 \\
+    \bottomrule
+\end{tabularx}
+\caption{September 2023: initial means for each multispectral band of Landsat OLI/TIRS images}\label{tabA05}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{| p{1.5cm} | X | X | X | X | X | X | X | }
+  \toprule
+   Class & Band 1 & Band 2 & Band 3 & Band 4 & Band 5 & Band 6 & Band 7  \\
+   \midrule
+    Class 1 & 7805.3 & 7978.69 & 8394.85 & 8339.26 & 10618.8 & 10876.8 & 9549.69 \\
+    Class 2 & 7994.42 & 8207.25 & 8745.73 & 8818 & 11398.4 & 11816.7 & 10351.8 \\
+    Class 3 & 8183.55 & 8435.81 & 9096.6 & 9296.74 & 12178 & 12756.6 & 11154 \\
+    Class 4 & 8372.67 & 8664.38 & 9447.48 & 9775.48 & 12957.6 & 13696.6 & 11956.1 \\
+    Class 5 & 8561.79 & 8892.94 & 9798.36 & 10254.2 & 13737.2 & 14636.5 & 12758.2 \\
+    Class 6 & 8750.92 & 9121.5 & 10149.2 & 10733 & 14516.8 & 15576.5 & 13560.4 \\
+    Class 7 & 8940.04 & 9350.07 & 10500.1 & 11211.7 & 15296.4 & 16516.4 & 14362.5 \\
+    Class 8 & 9129.17 & 9578.63 & 10851 & 11690.4 & 16076 & 17456.4 & 15164.7 \\
+    Class 9 & 9318.29 & 9807.2 & 11201.9 & 12169.2 & 16855.6 & 18396.3 & 15966.8 \\
+    Class 10 & 9507.41 & 10035.8 & 11552.8 & 12647.9 & 17635.2 & 19336.3 & 16768.9 \\
+    \bottomrule
+\end{tabularx}
+\caption{November 2023: initial means for each multispectral band of Landsat OLI/TIRS images}\label{tabA06}
+\end{table}
+
+%--------------------------->
+\section[\appendixname~\thesection]{Standard deviations for DNs of pixels by 10 computed classes}
+
+\begin{longtable}{@{\extracolsep{\fill}}p{1.5cm}cccccccc@{}}
+\caption{Bimonthly evaluation of the standard deviations of Digital Numbers (DN) computed for pixels assigned to 10 land cover classes in landscapes of Rif Mountains, north Morocco. Evaluated each multispectral band (1 to 7) of Landsat 8-9 OLI/TIRS. Period: 2023, January to May.} \label{tabA2}\\
+\hline \textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7} \\ \hline 
+\endfirsthead
+
+\multicolumn{5}{c}%
+{{\tablename\ \thetable{} -- continued from previous page}} \\
+\textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7}  \\ \hline 
+\endhead
+
+\hline \multicolumn{8}{r}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+%\bf{2019} &  &  &  &  &  &  & \\
+\multicolumn{8}{| c |}{\textbf{2023: January}}\\
+\hline
+1 & 520.366 & 535.906 & 762.029 & 534.589 & 458.971 & 261.960 & 185.243 \\
+2 & 490.239 & 471.037 & 624.903 & 718.469 & 1108.75 & 864.994 & 643.283 \\
+3 & 469.625 & 475.629 & 523.194 & 551.304 & 924.17 & 813.025 & 684.606 \\
+4 & 314.352 & 297.355 & 402.396 & 473.559 & 946.247 & 881.536 & 697.401 \\
+5 & 355.762 & 363.823 & 482.001 & 628.670 & 1123.910 & 809.348 & 943.121 \\
+6 & 398.402 & 397.373 & 474.544 & 609.048 & 1059.400 & 1019.420 & 849.959 \\
+7 & 831.164 & 913.648 & 997.848 & 1243.020 & 1609.220 & 1416.340 & 1089.100 \\
+8 & 602.747 & 649.726 & 694.899 & 843.584 & 1472.750 & 926.428 & 972.410 \\
+9 & 563.373 & 645.449 & 846.794 & 1005.060 & 1844.240 & 1204.890 & 1309.140 \\
+10 & 3912.350 & 4022.450 & 3523.310 & 3432.850 & 3098.910 & 2796.470 & 2599.350 \\
+\hline
+%\bf{2022} &  &  &  & & & & \\
+\multicolumn{8}{| c |}{\textbf{2023: March}}\\
+\hline
+1 & 490.469 & 541.212 & 879.207 & 716.637 & 616.488 & 686.935 & 613.483 \\
+2 & 255.312 & 246.682 & 318.072 & 462.128 & 1664.020 & 929.262 & 719.619 \\
+3 & 541.560 & 602.780 & 686.249 & 782.835 & 1273.070 & 980.419 & 834.318 \\
+4 & 344.733 & 387.283 & 524.843 & 812.884 & 1659.040 & 980.065 & 855.260 \\
+5 & 377.657 & 422.529 & 565.366 & 724.443 & 1044.500 & 753.815 & 856.870 \\
+6 & 507.082 & 559.630 & 652.069 & 974.570 & 1023.500 & 866.568 & 784.542 \\
+7 & 449.736 & 488.873 & 597.974 & 692.265 & 1060.560 & 878.137 & 929.794 \\
+8 & 532.728 & 589.376 & 727.215 & 948.085 & 1317.450 & 934.689 & 1002.260 \\
+9 & 507.096 & 562.500 & 709.818 & 853.806 & 1051.740 & 1083.610 & 1336.400 \\
+10 & 753.846 & 857.879 & 1039.350 & 1108.080 & 1502.720 & 1502.480 & 2189.920 \\
+\hline
+
+%\bf{2023} &  &  &  & & & & \\
+\multicolumn{8}{| c |}{\textbf{2023: May}}\\
+\hline
+1 & 465.095 & 566.529 & 901.861 & 522.758 & 321.154 & 193.603 & 120.269 \\
+2 & 277.062 & 255.083 & 376.608 & 450.477 & 1258.88 & 804.346 & 710.667 \\
+3 & 441.646 & 468.557 & 562.157 & 597.613 & 1136.880 & 723.626 & 673.917 \\
+4 & 378.651 & 385.161 & 519.410 & 649.726 & 1220.780 & 868.215 & 1039.880 \\
+5 & 258.976 & 264.420 & 393.296 & 494.295 & 1055.540 & 951.268 & 799.838 \\
+6 & 228.533 & 221.204 & 444.333 & 414.391 & 1722.940 & 994.491 & 630.409 \\
+7 & 531.397 & 586.941 & 678.976 & 806.428 & 1337.73 & 1061.7 & 936.166 \\
+8 & 623.942 & 671.415 & 760.778 & 817.799 & 1089.700 & 905.306 & 884.892 \\
+9 & 528.555 & 602.147 & 767.459 & 860.058 & 1806.600 & 1088.830 & 1165.730 \\
+10 & 1210.190 & 1398.230 & 1656.380 & 1682.400 & 1778.850 & 1867.540 & 2167.590 \\
+\hline
+\end{longtable}
+
+\begin{longtable}{@{\extracolsep{\fill}}p{1.5cm}cccccccc@{}}
+\caption{Bimonthly evaluation of the standard deviations of Digital Numbers (DN) computed for pixels assigned to 10 land cover classes in landscapes of Rif Mountains, north Morocco. Evaluated each multispectral band (1 to 7) of Landsat 8-9 OLI/TIRS. Period: 2023, July to November.} \label{tab04}\\
+\hline \textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7} \\ \hline 
+\endfirsthead
+
+\multicolumn{5}{c}%
+{{\tablename\ \thetable{} -- continued from previous page}} \\
+\textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7}  \\ \hline 
+\endhead
+
+\hline \multicolumn{8}{r}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+%\bf{2019} &  &  &  &  &  &  & \\
+\multicolumn{8}{| c |}{\textbf{2023: July}}\\
+\hline
+1 & 401.603 & 474.680 & 753.823 & 554.671 & 452.066 & 377.558 & 279.117 \\
+2 & 444.544 & 494.063 & 605.472 & 689.234 & 1469.020 & 1074.000 & 858.682 \\
+3 & 400.815 & 449.109 & 548.777 & 721.564 & 1773.570 & 1030.710 & 912.245 \\
+4 & 329.822 & 337.588 & 456.271 & 617.552 & 934.712 & 737.397 & 693.313 \\
+5 & 383.645 & 392.394 & 484.058 & 558.823 & 955.127 & 757.462 & 640.994 \\
+6 & 369.823 & 422.794 & 574.353 & 625.855 & 807.736 & 699.93 & 634.601 \\
+7 & 380.957 & 393.860 & 462.246 & 493.918 & 938.201 & 756.140 & 818.874 \\
+8 & 389.170 & 433.991 & 512.028 & 543.331 & 810.822 & 715.835 & 672.958 \\
+9 & 585.918 & 680.160 & 803.684 & 738.175 & 743.199 & 762.175 & 944.871 \\
+10 & 994.099 & 1126.100 & 1284.760 & 1153.090 & 1115.620 & 1242.490 & 1575.490 \\
+\hline
+%\bf{2022} &  &  &  & & & & \\
+\multicolumn{8}{| c |}{\textbf{2023: September}}\\
+\hline
+1 & 437.651 & 443.108 & 680.601 & 464.861 & 251.267 & 134.622 & 109.822 \\
+2 & 352.790 & 343.761 & 458.110 & 604.993 & 1647.410 & 1009.150 & 737.153 \\
+3 & 413.844 & 428.298 & 527.591 & 627.276 & 1270.460 & 820.868 & 669.725 \\
+4 & 609.427 & 665.603 & 750.628 & 922.569 & 2049.290 & 1237.420 & 1107.210 \\
+5 & 410.913 & 444.970 & 557.272 & 605.301 & 936.943 & 802.527 & 790.452 \\
+6 & 412.096 & 463.575 & 605.626 & 711.301 & 1026.750 & 826.580 & 710.861 \\
+7 & 476.481 & 556.664 & 690.121 & 675.737 & 961.119 & 727.211 & 750.357 \\
+8 & 560.709 & 661.131 & 788.185 & 748.966 & 878.300 & 826.902 & 929.749 \\
+9 & 734.715 & 872.060 & 1021.830 & 874.668 & 875.353 & 1032.820 & 1289.020 \\
+10 & 1228.510 & 1477.600 & 1759.470 & 1582.050 & 1479.630 & 1594.770 & 1825.860 \\
+\hline
+
+%\bf{2023} &  &  &  & & & & \\
+\multicolumn{8}{| c |}{\textbf{2023: November}}\\
+\hline
+1 & 408.799 & 366.029 & 518.468 & 358.299 & 494.063 & 288.290 & 183.250 \\
+2 & 337.779 & 313.223 & 378.857 & 471.889 & 1236.690 & 864.664 & 718.244 \\
+3 & 329.228 & 309.538 & 391.118 & 526.252 & 1133.950 & 971.402 & 842.809 \\
+4 & 357.573 & 340.276 & 405.652 & 474.368 & 868.293 & 878.208 & 719.913 \\
+5 & 407.823 & 418.715 & 501.585 & 583.480 & 1177.420 & 746.789 & 760.614 \\
+6 & 560.647 & 596.644 & 680.376 & 807.904 & 1923.630 & 1063.100 & 992.282 \\
+7 & 404.268 & 434.357 & 567.739 & 689.356 & 1145.220 & 911.636 & 828.516 \\
+8 & 502.947 & 558.014 & 686.296 & 677.680 & 976.150 & 885.420 & 857.641 \\
+9 & 571.593 & 667.463 & 845.177 & 950.398 & 1288.210 & 1164.560 & 1261.840 \\
+10 & 1130.670 & 1394.490 & 1762.720 & 1842.670 & 1953.210 & 2219.250 & 2058.000 \\
+\hline
+\end{longtable}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+%\printendnotes[custom] % Un-comment to print a list of endnotes
+
+\reftitle{References}
+%\nocite{*}
+
+%=====================================
+% References, variant A: external bibliography
+%=====================================
+\bibliography{Morocco.bib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{adjustwidth}
+\end{document}
