@@ -160,7 +160,7 @@ In this context, land cover maps \hl{that visualise regional} environmental \hl{
 %----------- section ----------->
 \section{Objective and motivation}
 
-This paper focuses specifically on the application of \hl{ML} methods to satellite image processing incorporated into the GRASS GIS software through the embedded Python Scikit-Learning libraries. \hl{Using ML in the traditional Geographic Information System (GIS) for mapping land cover types is a challenge that has been researched for many years and has many proposed solutions}. Machine learning is an artificial approach to geospatial data processing that relies on mathematical and statistical algorithms to give computers the ability to “learn” from data. \hl{In this context, ML} can be applied to satellite images such as Landsat 8-9 OLI/TIRS since pixels are discrete quantitative variables \cite{Lemenkova202026}. 
+This paper focuses specifically on the application of \hl{ML} methods to satellite image processing incorporated into the GRASS GIS software through the embedded Python Scikit-Learning libraries. \hl{Using ML in the traditional Geographic Information System (GIS) for mapping land cover types is a challenge that has been researched for many years and has many proposed solutions}. Machine learning is an artificial approach to geospatial data processing that relies on mathematical and statistical algorithms to give computers the ability to “learn” from data. \hl{In this context, ML} can be applied to satellite images such as Landsat 8-9 OLI/TIRS since pixels are discrete quantitative variables \cite{DAPAZGOMES,Lemenkova202026,LAROCHEPINEL2024109163}. 
 
 Due to \hl{specific advantages of ML}, the functions of the programs improve their performance in solving geospatial analysis tasks \cite{More02072020,Lemenkova202403,GarciaPedrero03042017}. In the field of satellite image processing, this concerns the usual image processing tasks such as pixel recognition \cite{NASIRI2023103555,EBRAHIMY2023103390}, spectral reflectance analysis \cite{FU2024104421}, classification optimization \cite{PADHY2024100278,Lemenkova202401}, the development of more advanced methods of image analysis and interpretation, as well as the implementation of these methods to cartographic visualization, as discussed earlier \cite{HABIB20231,Lemenkova202406,KHALDI2024104191}. Compared to traditional approaches, the improvements brought by \hl{the ML} algorithms concern the \hl{modelling} of data with an average statistical error as low as possible.
 
@@ -173,13 +173,13 @@ In programming libraries, image processing algorithms are implemented as a set o
 %----------- section ----------->
 \section{Study Area}
 
-The study focuses on northern Morocco, the Rif Mountains, Figure \ref{fig01}. The Rif Mountains were formed as a result of complex tectonic interactions between the African and Eurasian plates. Therefore, the complex geological setting of northern Morocco in the Rif region has resulted in moderate tectonic activities \cite{CRINITI2024106861}. 
+The study focuses on northern Morocco, the Rif Mountains, Figure \ref{fig01}. \hl{The Rif} Mountains region is located between latitudes 34\degree 30'-35°15'N and longitudes 4°30'-5°30'W, with an extension of about 30,000 m and an occupation of 4000 km² \cite{ABOUTOFAIL2024112522}. \hl{The} geographical position \hl{of the country }and \hl{its }vast\hl{ }extent\hl{ }result\hl{ }in a great variety of ecosystems. Landscapes vary from humid in the Rif and Atlas, to arid Saharan in the south\hl{, }including sub-humid transition zones and semi-arid in the plains and foothills areas \cite{MCGREGOR20091434}. The Rif Mountains were formed as a result of complex tectonic interactions between the African and Eurasian plates. \hl{ }Complex geological setting of northern Morocco in the Rif region has resulted in moderate tectonic activities \cite{CRINITI2024106861,PARISH199945}. 
 
 \begin{figure}[H]
     \begin{center}
 	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_01}
     \end{center}
-    \caption{General topographic map of Morocco with outlined location of the study area. Mapping software: Generic Mapping Tools (GMT) version 6.4.0. Data source: GEBCO. Map source: author.}
+    \caption{General topographic map of Morocco with outlined location of the study area. Mapping software: Generic Mapping Tools (GMT) version 6.4.0. Data source: \hl{General Bathymetric Chart of the Oceans} (GEBCO). Map source: author.}
     \label{fig01}
 \end{figure}
 
@@ -195,42 +195,49 @@ The geomorphological structures of the region are composed of three main\hl{ }un
 
 The geomorphological structure of the Rif can be divided into three segments. The Western Rif is covered with large mountains; its climate is mild, with heavy rains and showers in winter. The Central Rif has diverse reliefs and heterogeneous landscapes. The Eastern Rif is the flattest part of the range \cite{EDDAKIRI2024e02401}. The primary type is presented by the vegetation of the cultivated lands in mosaic distributed along the basement of the Rif Mountains. The vegetation types in the Atlas Mountains region are presented by a closed to open evergreen or semi-deciduous broadleaf forest, with a forest cover of 100 to 40\% for closed to open trees or semi-deciduous trees \cite{BOUBEKRAOUI2023100388}. This geomorphological and climatic heterogeneity corresponds to a bio-ecological and environmental diversity. Thus, the spatial richness of the conditions of climate and geology accentuates this biodiversity and types of land use in Morocco.
 
-The main structure of the Rif is represented by the limestone massifs. The underground water reserves of the Rif maintain the distribution of vegetation and the rivers that originate in the Rif \cite{Aqil03042015}. Thanks to these hydrogeological features, short coastal rivers and streams flow from the Rif to the Mediterranean, which are \hl{characterised} by a torrential and erosional regime \cite{Zouhri01062004}. These sources of these rivers supply water to diverse and very heterogeneous types of vegetation around the Rif. These processes briefly illustrate the close link between the geomorphological features, hydrogeology and vegetation of the Rif region \cite{al2017milieux}. 
+The main structure of the Rif is represented by the limestone massifs. The underground water reserves of the Rif maintain the distribution of vegetation and the rivers that originate in\hl{ }Rif \cite{Aqil03042015}. \hl{Due} to these hydrogeological features, short coastal rivers and streams flow from the Rif to the Mediterranean, which are \hl{characterised} by a torrential and erosional regime \cite{Zouhri01062004}. These sources of these rivers supply water to diverse and very heterogeneous types of vegetation around the Rif. These processes briefly illustrate the close link between the geomorphological features, hydrogeology and vegetation of the Rif region \cite{al2017milieux}. 
 
-The Rif Mountains region is located between latitudes 34\degree 30'-35°15'N and longitudes 4°30'-5°30'W, with an extension of about 30,000 m and an occupation of 4000 km² \cite{ABOUTOFAIL2024112522}. This particular geographical position and vast geographical extent between Africa and Europe results in a great variety of ecosystems in Morocco. Landscapes vary from humid in the Rif and Atlas, to arid Saharan in the south of the country, including sub-humid transition zones and semi-arid in the plains and foothills areas (Kettani and Langton, 2012).
+Seismic,\hl{ }magnetic and thermal activities in the Rif caused by local crustal earthquakes are related to the \hl{geological} instability of this region \cite{DUARTE2024104330}. Specifically, this region presents a southern branch of the Betic-Rif arc that is part of the Alpine ranges. This region has experienced deformations between northwest Africa and southern Spain (Iberia) since the Tertiary \cite{CHABLI2014123}, followed by the convergence between Africa and the Iberian Peninsula \cite{LGHAMOUR2024108941,KAIROUANI2024106762}. \hl{This} tectonic block is \hl{moved} towards the west-southwest and the region still experiences \hl{tectonic} activities \cite{MALUSA2024230533}. At the same time, seismic-tectonic activities shape the regional geomorphology \cite{SADKAOUI2024105219}. In turn, this controls the distribution of land cover types and is expressed in the landscapes. Such links between geology, geomorphology and environmental context have been discussed in previous works \cite{COSTA2024109578,BOUTAHAR2023104828,KAIROUANI2024106762}.
 
-Seismic, electrical, magnetic and thermal activities in the Rif caused by local crustal earthquakes are related to the tectonic and geological instability of this region \cite{DUARTE2024104330}. Specifically, this region presents a southern branch of the Betic-Rif arc that is part of the Alpine ranges. This region has experienced deformations between northwest Africa and southern Spain (Iberia) since the Tertiary \cite{CHABLI2014123}, followed by the convergence between Africa and the Iberian Peninsula \cite{LGHAMOUR2024108941,KAIROUANI2024106762}. As a result, this tectonic block is expelled towards the west-southwest and the region still experiences seismic and tectonic activities \cite{MALUSA2024230533}. At the same time, seismic-tectonic activities shape the regional geomorphology \cite{SADKAOUI2024105219}. In turn, this controls the distribution of land cover types and is expressed in the landscapes. Such links between geology, geomorphology and environmental context have been discussed in previous works \cite{COSTA2024109578,BOUTAHAR2023104828,KAIROUANI2024106762}.
-
-The Mediterranean coastal edge of northern Morocco is a habitat for numerous peatlands with boreal floristic affinities and high conservation value, and wetlands (Muller et al., 2022). Occasional patches of rain-fed trees and scrub crops, which depend on water availability are distributed in the western regions of the country. Rain-fed croplands interspersed with areas of sparse vegetation are visible along the Atlantic Ocean coasts. Sparse herbaceous vegetation comprising a complex pattern mixed with shrubs and thickets. Other land cover types are generally presented by urban areas around cities with artificial surfaces and associated areas, and bare soil areas in desert and unoccupied lands, Figure \ref{fig02}.
-
-In addition to the natural variability of the Rif landscapes, its forest areas are affected by human factors and hazards \cite{chebli2018forest}. Thus, the expansion of agricultural land, forest fires and socio-demographic, economic and urban dynamics negatively affect the mountainous forests of the Rif \cite{Adghir02112018,Boutahar01102024,Jimenez01092002}. In addition, the combination of a hot and humid climate, a diverse relief and contrasting topography of the Rif creates favorable conditions for landslides that present geomorphological risks in Northern Morocco \cite{Dahmani10102024,EsSmairi13122022,Manaouch03032024}.
+The Mediterranean \hl{coasts} of\hl{ }Morocco is a habitat for numerous \hl{wetland ecosystems including} peatlands with boreal floristic affinities and high conservation value\hl{ } \cite{MULLER202235,AJBILOU2006104}. Occasional patches of rain-fed trees and scrub crops\hl{ }are distributed in the western regions of the country \hl{and depend on water availability} \cite{MARANON1999147}. Rain-fed croplands\hl{, including olive trees and orchards in monoculture systems,} interspersed with areas of sparse vegetation are visible along the Atlantic Ocean coasts \cite{SALMON2015321,ZAYANI2023e22910}. Sparse herbaceous vegetation comprising a complex pattern mixed with shrubs and thickets. Other land cover types are generally presented by urban areas around cities with artificial surfaces and associated areas, and bare soil areas in desert and unoccupied lands, Figure \ref{fig02}. \hl{Besides} natural variability of the Rif \hl{region}, forest areas are affected by human factors \hl{(socio-demographic, economic and urban dynamics)} and hazards \hl{caused by erosion and forest fires} \cite{chebli2018forest}. \hl{The} expansion of agricultural \hl{lands} negatively affect the mountainous forests of the Rif \cite{Adghir02112018,Boutahar01102024,Jimenez01092002}. In addition, the \hl{contrasts from} hot and humid climate,\hl{ varied} topography of the Rif \hl{facilitates} landslides that present geomorphological risks in Northern Morocco \cite{Dahmani10102024,EsSmairi13122022,Manaouch03032024}.
 
 %----------- section ----------->
 \section{Materials and Methods}
 
 %----------- subsection ----------->
 \subsection{Data}
-
-The spatial analysis is based on two types of data: on the one hand, topographic and land use data obtained from GEBCO, (Figure \ref{fig01}) and FAO, (Figure \ref{fig02}); on the other hand, Landsat 8-9 OLI/TIRS satellite image data covering the bimonthly period 2023: January, March, May, July, September and November, Figure \ref{fig03}.
+The Landsat 8-9 OLI/TIRS satellite image data covering the bimonthly period 2023: January, March, May, July, September and November, Figure \ref{fig03}.
 
 \begin{figure}[H]
     \begin{center}
-	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_03}
+	\hspace{-35pt}\includegraphics[width=12.0cm]{Fig_03}
     \end{center}
     \caption{Landsat images on 2023: (a) – January 26; (b) – March 15; (c) –May 10; (d) – July 29; (e) - September 23; (f) – November 26.}
     \label{fig03}
 \end{figure}
 
-The L2 data type is OLI\_TIRS\_L2SP with ground control points version 5. The processing software version is LPGS\_15.3.1c for Landsat-8 scenes and LPGS\_16.3.1 for Landsat-9 (2023) scene. The satellite roll angle is zero for Landsat 8 scenes and -0.001 for Landsat 9. The images were taken during the day at Nadir, with cloud cover less than 10\%.
-
-In this work, only multispectral bands with an acquisition resolution of 30 meters were used, except for panchromatic bands with a resolution of 15 m. The combination of multispectral bands is mainly used for the creation of false/true color composites for classification, especially for image visualization. The available data were listed using the search template in "g.list rast".
+The L2 data type is OLI\_TIRS\_L2SP with \hl{the }ground control points \hl{of }version 5. The processing software version is LPGS\_15.3.1c for Landsat-8 scenes and LPGS\_16.3.1 for Landsat-9 (2023) scene. The satellite roll angle is zero for Landsat 8 scenes and -0.001 for Landsat 9. The images were taken during the day at Nadir, with cloud cover less than 10\%. \hl{Here}, only multispectral bands with an acquisition resolution of 30 meters were used, except for panchromatic bands with a resolution of 15 m. The combination of multispectral bands is mainly used for the creation of false/true color composites for classification, especially for image visualization. The available data were listed using the search template in "g.list rast". 
 
 %----------- subsection ----------->
 \subsection{Workflow}
 
-Mapping of topographic data was carried out using GMT using existing methods \cite{Lemenkova202221,Lemenkova202217,10537274,5369602}, while mapping of land use data was carried out using QGIS. Mapping of land cover maps from \hl{RS} data is based on satellite image classification methods.
+\hl{We first plot the workflow obtained from each methodological step to provide a general picture of the approach used in this study. Since various GIS include different steps of data processing, so we next summarise the scheme into 12 well-recognised research steps, based on modules of GRASS GIS for geospatial data processing, Figure} \ref{fig04}. 
 
-The aim of this approach is to model the data and predict for each pixel a label, i.e. Land Cover Class. Using \hl{ML} methods, these methods are divided into two categories: supervised classification and unsupervised classification. This study involves the use and comparison of these two methods. The image processing process is composed of the following steps, implemented in the form of free and open source modules on GRASS SIG. The code for organising the project and importing data is presented below.
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-35pt}\includegraphics[width=13.0cm]{Fig_04}
+    \end{center}
+    \caption{\hl{Workflow diagram illustrating major steps of research design used for organisation of data processing tasks. Software: GIMP, version 2.10. Diagram source: author.}}
+    \label{fig04}
+\end{figure}
+
+\hl{Major research steps include the following points: 1) Data collection; 2) Software selection; 3) Quality control; 4) Data pre-processing; 5) Image processing 6) Clustering (unsupervised classification); 7) Machine learning; 8) Training dataset; 9) Supervised classification; 10) Numerical computation; 11) Cartographic mapping; 12) Validation.}
+
+\hl{The data preprocessing procedures included several steps which include geometric and atmospheric correction for optical remote sensing images. The geometric correction was performed using 'i.rectify' module of GRASS GIS which corrected each image by performing a coordinate transformation for the pixels in the images using control points. Hence the x,y cell coordinates on the images were re-calculated to a transformation matrix and then converted to standard map coordinates for each pixel in the image. Following that, the atmospheric correction was performed using the 6S algorithm embedded in the 'i.atcorr' module of GRASS GIS. The atmospheric correction is essential to evaluating numerically the amount of wavelengths reflected of diverse land cover types of the surface in various seasonal periods} \cite{f14071414,ABDELRAHMANHEGAB2024716}. \hl{The pansharpening has been performed using the 'i.pansharpen' module of GRSAS GIS which uses image fusion algorithms to sharpen multispectral channels with high-resolution panchromatic channels. In this way, the resolution of the multispectral is improved. The effectiveness of the pansharpening is described in earlier studies on RS data processing} \cite{rs15082017,rs13173433}.
+
+Mapping of topographic data was carried out using GMT using existing methods \cite{Lemenkova202221,BECKER20051075,Lemenkova202217,10537274,5369602}, while mapping of land use data was carried out using QGIS \cite{FANG202031}. Mapping of land cover maps from \hl{RS} data is based on satellite image classification methods.
+
+The aim of this approach is to model the data and predict for each pixel a label, i.e. Land Cover Class. Using \hl{ML} methods, these methods are divided into two categories: supervised classification and unsupervised classification. This study involves the use and comparison of these two methods. The image processing process is composed of the following steps, implemented in the form of free and open source modules on GRASS \hl{GIS}. The code for organising the project and importing data is presented below.
 
 \begin{footnotesize}
 \begin{verbatim}
@@ -272,19 +279,19 @@ g.list rast
 \end{verbatim}
 \end{footnotesize}
 
-First, the import and preprocessing of six Landsat images was done using the modules 'r.import' that reads the data and 'i.landsat.toar' that converts Landsat 8-9 OLI/TIRS images and transforms the calibrated digital numbers for the reflectance at the top of the atmosphere. In this way, the quality of the images is improved. On the colored composition in "false colors", the vegetation appears in different shades depending on the species, but also on the environmental conditions: geomorphology of the mountain slope, the curvature and the inclination of the slope that affect the shadows on the images, Figure \ref{fig04}.
+First, the import and preprocessing of six Landsat images was \hl{implemented} using the modules 'r.import' that reads the data\hl{. Then, the }'i.landsat.toar' \hl{was used to convert} Landsat 8-9 OLI/TIRS images and \hl{to transform} the calibrated digital numbers for the reflectance at the top of the atmosphere. In this way, the quality of the images \hl{has been} improved. On the \hl{coloured} composition in "false colors", the vegetation appears in different shades depending on the species, but also on the environmental conditions: geomorphology of the mountain slope, the curvature and the inclination of the slope that affect the shadows on the images, Figure \ref{fig05}.
 
 \begin{figure}[H]
     \begin{center}
-	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_04}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_05}
     \end{center}
     \caption{Landsat 8-9 multispectral images: false and true colour composites.}
-    \label{fig04}
+    \label{fig05}
 \end{figure}
 
-The spectral combination calculation integrates different spectral bands of Landsat based on the physical properties of the land covers reflected in the images. Therefore, the spectral bands are useful to improve the discrimination between landscape classes, Figure \ref{fig04}. The vegetation observed on the Atlantic Ocean side appears in darker reds than the surrounding vegetation around the Rif Mountains. The water that absorbs almost all wavelengths is very dark, up to black, while the empty ground surface appears very light, in tones ranging from beige to ochre, Figure \ref{fig04}.
+The spectral combination calculation integrates different spectral bands of Landsat based on the physical properties of the land covers reflected in the images. Therefore, the spectral bands are useful to improve the discrimination between landscape classes, Figure \ref{fig05}. The vegetation observed on the Atlantic Ocean side appears in darker reds than the surrounding vegetation around the Rif Mountains. The water that absorbs almost all wavelengths is very dark, up to black, while the empty ground surface appears very light, in tones ranging from beige to ochre, Figure \ref{fig05}.
 
-Creation of color composites (Figure \ref{fig04}) was performed based on the Landsat multispectral bands using the 'r.composite' module and visualization of the images using the 'd.rast' module. The estimation of the color composition model aims to better recognize the ten land cover classes representing landscape patches in the Rif Mountains and its surroundings in the images. Modeling and simulation of the images using the principle of color compositions includes 'true color' and 'false color' images, Figure \ref{fig04}. Here, the spectral bands of the images are visualized in several color combinations that are widely used in \hl{RS} because they are very suitable for studying vegetation and landscape. For example, the combination with band number 5 (infrared, IR) is based on the properties of vegetation that reflect very strongly near-IR radiation.
+Creation of \hl{colour} composites (Figure \ref{fig05}) was performed based on the Landsat multispectral bands using the 'r.composite' module and visualization of the images using the 'd.rast' module. The estimation of the color composition model aims to better \hl{recognise }the ten land cover classes representing landscape patches in the Rif Mountains and its surroundings in the images. \hl{Modelling} and simulation of the images using the principle of \hl{colour} compositions includes 'true color' and 'false color' images, Figure \ref{fig05}. Here, the spectral bands of the images are visualized in several \hl{colour} combinations that are widely used in \hl{RS} because they are very suitable for studying vegetation and landscape. For example, the combination with band number 5 (infrared, IR) is based on the properties of vegetation that reflect very strongly near-IR radiation.
 
 \begin{footnotesize}
 \begin{verbatim}
@@ -313,7 +320,7 @@ d.out.file output=Morocco_J_234 format=jpg --overwrite
 
 \hl{The use of ML approach to} satellite image processing by GRASS GIS consists of two phases. The first consists of estimating a model from data by automatic clustering. The unsupervised clustering approach groups comparable samples within the same class using the k-means algorithm. The image clustering and classification according to the maximum likelihood algorithm (unsupervised learning) using the 'i.cluster' and 'i.maxlik' modules. The groups, i.e. the clusters are made up of pixels with similar spectral values. The unsupervised classification uses the clustering approach performed using the 'i.cluster' module as explained above.
 
-Unsupervised classification uses the clustering approach performed using the "i.cluster" module. The "i.cluster" generates a signature file and reports the cluster maps, or regions, that were automatically generated using the "k-means" data partitioning algorithm. The GRASS SIG code used for this is the following (example for the 2013 image, repeated for images from all other years using the same technique): "i.cluster group=L8\_2013 subgroup=res\_30m signaturefile=cluster\_L8\_2013 classes=8 reportfile=rep\_clust\_L8\_2013.txt". Therefore, samples within a class are dissimilar from samples in others.
+\hl{The }unsupervised classification \hl{employs} clustering approach performed using the "i.cluster" module. The "i.cluster" generates a signature file and reports the cluster maps, or regions, that were automatically generated using the "k-means" data partitioning algorithm. The GRASS SIG code used for this is the following (example for the 2013 image, repeated for images from all other years using the same technique): "i.cluster group=L8\_2013 subgroup=res\_30m signaturefile=cluster\_L8\_2013 classes=8 reportfile=rep\_clust\_L8\_2013.txt". Therefore, samples within a class are dissimilar from samples in others.
 
 \begin{footnotesize}
 \begin{verbatim}
@@ -434,7 +441,7 @@ Finally, the visualization of images using the auxiliary graphic modules of GRAS
 %----------- section ----------->
 \section{Results and Discussion}
 
-This section presents the result of satellite image classification using three approaches: unsupervised classification and supervised classification by \hl{ML} methods using two approaches - "Decision tree classifier" and "Extra tree classifier". Figure \ref{fig05} shows the images generated using the clustering classification method, which illustrate the land cover changes with a bi-monthly time interval, Table \ref{tab01}.
+\hl{Mountain areas in northern Morocco are particularly sensitive to climate change and pastoral activities. Seasonal variations in climate and effects from human activities strongly influence agro-ecosystems and cause changes in land cover types. Although there are some efforts on mapping the landscape dynamics in such areas, any seasonal response of the land cover types will is better evaluated using quantitative assessment of RS data and ML methods. Using examples from the Rif Atlas in Morocco, this paper explored the seasonal variations in land cover types in northern Morocco in 2023 caused by the effects from livestock management, arboriculture and climate change. The selected period was assessed for the year 2023 using the available time series from Landsat dataset collection. The results} of satellite image classification \hl{were obtained} using three approaches: unsupervised classification and supervised classification by \hl{ML} methods \hl{which employs} two \hl{distinct algorithms:} "Decision tree classifier" and "Extra tree classifier". Figure \ref{fig06} shows the images generated using the clustering classification method, which illustrate the land cover changes with a bi-monthly time interval, Table \ref{tab01}.
 
 \begin{table}[H]
 \centering
@@ -453,24 +460,24 @@ This section presents the result of satellite image classification using three a
 \caption{Bimonthly variations of in Rif Mountains by pixels over 10 land cover classes in 2023 in two (cold/hot) different seasons: 1) January, March and May; 2) July, September and November}\label{tab01}
 \end{table}
 
-Figure \ref{fig06} shows that the classification using the “decision tree classifier” method improved the results since the \hl{ML} results are more robust and stable compared to the unsupervised classification. The January scene shows the least plant activity which gradually increases from March to May and decreases respectively after the hot summer period until November.
+Figure \ref{fig07} shows that the classification using the “decision tree classifier” method improved the results since the \hl{ML} results are more robust and stable compared to the unsupervised classification. The January scene shows the least plant activity which gradually increases from March to May and decreases respectively after the hot summer period until November.
 
 \begin{figure}[H]
     \begin{center}
-	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_05}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_06}
     \end{center}
     \caption{Satellite image classification using unsupervised classification clustering methods and the GRASS GIS 'MaxLike' approach.}
-    \label{fig05}
+    \label{fig06}
 \end{figure}
 
 On the one hand, vegetation varied seasonally in the Rif region according to the natural dynamics of the phenological cycle during different calendar months. However, compared to other land cover types, the mosaic vegetation types of deciduous forests developed partially and differently for both algorithms, with more density and a homogeneous pattern across the entire study area.
 
 \begin{figure}[H]
     \begin{center}
-	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_06}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_07}
     \end{center}
     \caption{Results of satellite image classification using supervised \hl{ML} method with GRASS GIS 'Decision Tree' algorithm.}
-    \label{fig06}
+    \label{fig07}
 \end{figure}
 
 On the other hand, technical improvements of the parameters that differ in various algorithms ‘MaxLike’, ‘DecisionTreeClassifier’ and ‘ExtraTreesClassifier’ allow to better visualize land cover classes on the images. Thus, the most complex landscape patches with high heterogeneity can be better distinguished, including sparsely distributed and densely distributed vegetation segments. Here, the rejection threshold map contains the index of a confidence level calculated for each classified pixel in the classified image of the 10 land cover classes in the Morocco region. Confidence intervals are defined and the rejection map is visualized with lower values meaning 'keep the correctly classified pixel' and higher values meaning “reject a misclassified pixel that could belong to another class category”. Thus, this map identifies cells in the classified raster image that have a low probability, i.e. a high rejection index, of being correctly assigned to the target class.
@@ -584,15 +591,15 @@ Figure 7 shows the land cover type patterns over the Rif Mountains and surroundi
 
 \begin{figure}[H]
     \begin{center}
-	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_07}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_08}
     \end{center}
     \caption{Results of satellite image classification using supervised \hl{ML} method with GRASS GIS 'Extra Tree' algorithm.}
-    \label{fig07}
+    \label{fig08}
 \end{figure}
 
-Compared to the previous results in Figure \ref{fig05} and Figure \ref{fig06}, the results of the Extra tree are not quite similar for the classification maps based on the “Decision tree” (Figure \ref{fig06}) and “Extra tree” algorithms (Figure \ref{fig07}), because they rely on the extremely random trees method. The “Extra tree” algorithm is similar to the random forest algorithm in its nature, but it processes images much faster. Therefore, technically, this algorithm is an improved ensemble supervised \hl{ML} method.
+Compared to the previous results in Figure \ref{fig06} and Figure \ref{fig07}, the results of the Extra tree are not quite similar for the classification maps based on the “Decision tree” (Figure \ref{fig07}) and “Extra tree” algorithms (Figure \ref{fig08}), because they rely on the extremely random trees method. The “Extra tree” algorithm is similar to the random forest algorithm in its nature, but it processes images much faster. Therefore, technically, this algorithm is an improved ensemble supervised \hl{ML} method.
 
-However, this algorithm creates many decision trees using random sampling of pixels for each tree. The most important and unique feature of the “Extra trees” algorithm is that it randomly selects a pixel division value. Therefore, compared with the “decision tree” algorithms, the land cover types are diverse and uncorrelated. The best performance among the three image processing methods is demonstrated by the “decision tree” algorithms which divide the image into land cover classes with precision and detail. The accuracy assessment is presented in Figure \ref{fig08} and computational results available in Table \ref{tab03} and Table \ref{tab04}.
+However, this algorithm creates many decision trees using random sampling of pixels for each tree. The most important and unique feature of the “Extra trees” algorithm is that it randomly selects a pixel division value. Therefore, compared with the “decision tree” algorithms, the land cover types are diverse and uncorrelated. The best performance among the three image processing methods is demonstrated by the “decision tree” algorithms which divide the image into land cover classes with precision and detail. The accuracy assessment is presented in Figure \ref{fig09} and computational results available in Table \ref{tab03} and Table \ref{tab04}.
 
 \begin{longtable}{@{\extracolsep{\fill}}p{1.5cm}cccccccc@{}}
 \caption{Bimonthly evaluation of the class means of Digital Numbers (DN) computed for pixels assigned to 10 land cover classes in landscapes of Rif Mountains, north Morocco. Evaluated each multispectral band (1 to 7) of Landsat 8-9 OLI/TIRS. Period: 2023, January to May.} \label{tab03}\\
@@ -720,10 +727,10 @@ Visualization of Earth landscapes using cartographic methods has many approaches
 
 \begin{figure}[H]
     \begin{center}
-	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_08}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_09}
     \end{center}
     \caption{Accuracy evaluation using computed correctly classified pixels (\%), GRASS GIS.}
-    \label{fig08}
+    \label{fig09}
 \end{figure}
 
 The maps describing land use in the Rif mountain region are scientific and decision-making tools for Moroccan authorities and educational institutions. The images processed by GRASS GIS methods can be used in research work as input data for modeling systems of bimonthly vegetation cycles in the geomorphological context of the Rif. In addition, it can also be used for operational monitoring of bimonthly vegetation changes in northern Morocco, to apply research recommendations that require precise knowledge of the Rif territories.
@@ -749,6 +756,8 @@ The maps describing land use in the Rif mountain region are scientific and decis
 \end{tabularx}
 \caption{Computed points stability for iterations during classification and convergence of classes: January, March, May, July, September and November 2023}\label{tabA06}
 \end{table}
+
+\hl{Complex interactions between human activities, climate change and environmental dynamics results in high vulnerability of landscapes and ecosystems in Morocco. This is particularly important in northern Morocco, a region which is highly sensitive to the contrasting effects of climate variability ranging from arid Sahara to humid Mediterranean, and where current land cover types are affected by pastoralism. As well as highlighting current distribution of land cover types in norther Morocco, using RS data processed by ML algorithms presents new maps that allow quantification of land cover changes computed in pixels. For instance, numerical analysis has revealed that even for the least modified areas of bare areas located near desert, regional inventories show slight changes over diverse seasonal periods during calendar year. Spatial biases are also apparent if comparing such land cover types as grassland, croplands and forests.}
 
 %----------- section ----------->
 \section{Conclusion}
