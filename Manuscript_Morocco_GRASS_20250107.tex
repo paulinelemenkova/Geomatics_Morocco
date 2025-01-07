@@ -441,6 +441,9 @@ Finally, the visualization of images using the auxiliary graphic modules of GRAS
 %----------- section ----------->
 \section{Results and Discussion}
 
+%----------- subsection ----------->
+\subsection{\textcolor{blue}{Analysis of findings}}
+
 Mountain areas in northern Morocco are particularly sensitive to climate change and pastoral activities. Seasonal variations in climate and effects from human activities strongly influence agro-ecosystems and cause changes in land cover types. Although there are some efforts on mapping the landscape dynamics in such areas, any seasonal response of the land cover types will is better evaluated using quantitative assessment of RS data and ML methods. Using examples from the Rif Atlas in Morocco, this paper explored the seasonal variations in land cover types in northern Morocco in 2023 caused by the effects from livestock management, arboriculture and climate change. The selected period was assessed for the year 2023 using the available time series from Landsat dataset collection. The results of satellite image classification were obtained using three approaches: unsupervised classification and supervised classification by ML methods which employs two distinct algorithms: "Decision tree classifier" and "Extra tree classifier". Figure \ref{fig06} shows the images generated using the clustering classification method, which illustrate the land cover changes with a bi-monthly time interval, Table \ref{tab01}.
 
 \begin{table}[H]
@@ -459,6 +462,9 @@ Mountain areas in northern Morocco are particularly sensitive to climate change 
 \end{tabularx}
 \caption{Bimonthly variations of in Rif Mountains by pixels over 10 land cover classes in 2023 in two (cold/hot) different seasons: 1) January, March and May; 2) July, September and November}\label{tab01}
 \end{table}
+
+%----------- subsection ----------->
+\subsection{\textcolor{blue}{Interpretation of land cover types}}
 
 Figure \ref{fig07} shows that the classification using the “decision tree classifier” method improved the results since the ML results are more robust and stable compared to the unsupervised classification. The January scene shows the least plant activity which gradually increases from March to May and decreases respectively after the hot summer period until November.
 
@@ -480,11 +486,26 @@ The identified 10 land cover classes were generalised from the FAO-based land co
     \label{fig07}
 \end{figure}
 
-On the one hand, vegetation varied seasonally in the Rif region according to the natural dynamics of the phenological cycle during different calendar months. However, compared to other land cover types, the mosaic vegetation types of deciduous forests developed partially and differently for both algorithms, with more density and a homogeneous pattern across the entire study area. On the other hand, technical improvements of the parameters that differ in various algorithms ‘MaxLike’, ‘DecisionTreeClassifier’ and ‘ExtraTreesClassifier’ allow to better visualize land cover classes on the images. Thus, the most complex landscape patches with high heterogeneity can be better distinguished, including sparsely distributed and densely distributed vegetation segments. 
+\hl{Vegetation} varied seasonally in the Rif region according to the natural dynamics of the phenological cycle during different calendar months. However, compared to other land cover types, the mosaic vegetation types of deciduous forests developed partially and differently for both algorithms, with more density and a homogeneous pattern across the entire study area. Figure \ref{fig08} shows the land cover type patterns over the Rif Mountains and surrounding areas, defined using an improved ML algorithm. 
 
 The analysis of the presented maps approved the previously reported current environmental problems of Morocco which include deforestation, overgrazing \cite{ZAHER2020109544}, soil erosion, landscape deterioration and desertification \cite{MOUMANE2022100745,MULAS2012e46,KOUBA20181}, water scarcity and climate change \cite{MAYAUX2024104093}. Besides natural variability of the Rif region, forest areas are affected by human factors (socio-demographic, economic and urban dynamics) and hazards caused by erosion and forest fires \cite{chebli2018forest}. The expansion of agricultural lands negatively affect the mountainous forests of the Rif \cite{Adghir02112018,Boutahar01102024,Jimenez01092002}. In addition, the contrasts from hot and humid climate, varied topography of the Rif facilitates landslides that present geomorphological risks in Northern Morocco \cite{Dahmani10102024,EsSmairi13122022,Manaouch03032024}.
 
-Here, the rejection threshold map contains the index of a confidence level calculated for each classified pixel in the classified image of the 10 land cover classes in the Morocco region. Confidence intervals are defined and the rejection map is visualized with lower values meaning 'keep the correctly classified pixel' and higher values meaning “reject a misclassified pixel that could belong to another class category”. Thus, this map identifies cells in the classified raster image that have a low probability, i.e. a high rejection index, of being correctly assigned to the target class.
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-0pt}\includegraphics[width=14.0cm]{Fig_08}
+    \end{center}
+    \caption{Results of satellite image classification using supervised ML method with GRASS GIS 'Extra Tree' algorithm.}
+    \label{fig08}
+\end{figure}
+
+%----------- subsection ----------->
+\subsection{\textcolor{blue}{Comparison between performance of algorithms}}
+
+\hl{Selecting optimal method of land cover modelling ensures formalising our understanding of Earth's environmental system and dynamics through the quantification of various landscape elements. By quantifying distribution of land cover types, cartographic models enable to interpret relations between patches that constitute a complex mosaic of Earth's landscape which integrates different components into a coherent framework. Therefore, technical} improvements of the parameters that differ in various algorithms ‘MaxLike’, ‘DecisionTreeClassifier’ and ‘ExtraTreesClassifier’ \hl{were assessed to analyse the best performance of the algorithms for} land cover \hl{mapping}. 
+
+\hl{The} most complex landscape patches with high heterogeneity can be better distinguished, including sparsely distributed and densely distributed vegetation segments. Compared to the previous results in Figure \ref{fig06} and Figure \ref{fig07}, the results of the Extra tree are not quite similar for the classification maps based on the “Decision tree” (Figure \ref{fig07}) and “Extra tree” algorithms (Figure \ref{fig08}), because they rely on the extremely random trees method. The “Extra tree” algorithm is similar to the random forest algorithm in its nature, but it processes images much faster. Therefore, technically, this algorithm is an improved ensemble supervised ML method.
+
+However, this algorithm creates many decision trees using random sampling of pixels for each tree. The most important and unique feature of the “Extra trees” algorithm is that it randomly selects a pixel division value. Therefore, compared with the “decision tree” algorithms, the land cover types are diverse and uncorrelated. The best performance among the three image processing methods is demonstrated by the “decision tree” algorithms which divide the image into land cover classes with precision and detail. The accuracy assessment is presented in Figure \ref{fig09} and computational results available in Table \ref{tab03} and Table \ref{tab04}.
 
 \begin{equ}[!ht]
 \begin{equation}
@@ -591,19 +612,12 @@ Here, the rejection threshold map contains the index of a confidence level calcu
 \caption{Bimonthly class separability matrices between 10 classes of land cover types in Rif Mountains, Morocco: September and November 2023 (3).}
 \end{equ}
 
-Figure 7 shows the land cover type patterns over the Rif Mountains and surrounding areas, defined using an improved ML algorithm. Compared to the previous results in Figure \ref{fig06} and Figure \ref{fig07}, the results of the Extra tree are not quite similar for the classification maps based on the “Decision tree” (Figure \ref{fig07}) and “Extra tree” algorithms (Figure \ref{fig08}), because they rely on the extremely random trees method. The “Extra tree” algorithm is similar to the random forest algorithm in its nature, but it processes images much faster. Therefore, technically, this algorithm is an improved ensemble supervised ML method.
-
-However, this algorithm creates many decision trees using random sampling of pixels for each tree. The most important and unique feature of the “Extra trees” algorithm is that it randomly selects a pixel division value. Therefore, compared with the “decision tree” algorithms, the land cover types are diverse and uncorrelated. The best performance among the three image processing methods is demonstrated by the “decision tree” algorithms which divide the image into land cover classes with precision and detail. The accuracy assessment is presented in Figure \ref{fig09} and computational results available in Table \ref{tab03} and Table \ref{tab04}.
-
 Visualization of Earth landscapes using cartographic methods has many approaches, one of them is the use of RS data. This method uses satellite images as input data for their processing and classification. Typically, cartography relies on the use of traditional GIS methods that can produce a visualization using a defined workflow dependent on a particular software. The detection of land cover types depicted on these maps is perceptible to the human eye depending on the spatial and temporal resolution of the RS data. However, the use of automation and ML approaches facilitates image processes, thanks to a more objective and accurate classification of satellite images.
 
-\begin{figure}[H]
-    \begin{center}
-	\hspace{-0pt}\includegraphics[width=14.0cm]{Fig_08}
-    \end{center}
-    \caption{Results of satellite image classification using supervised ML method with GRASS GIS 'Extra Tree' algorithm.}
-    \label{fig08}
-\end{figure}
+%----------- subsection ----------->
+\subsection{\textcolor{blue}{Bimonthly evaluation of the land cover types}}
+
+\hl{Bimonthly evaluation of land cover types offer the advantage over annual dynamics, where usually landscape is evaluated at the same time but with interval of several years. In contrast, bimonthly evaluations enables a more close look into the gradual slight changes that are caused by the seasonal climate effects. }Complex interactions between human activities, climate change and environmental dynamics results in high vulnerability of landscapes and ecosystems in Morocco. This is particularly important in northern Morocco, a region which is highly sensitive to the contrasting effects of climate variability ranging from arid Sahara to humid Mediterranean, and where current land cover types are affected by pastoralism. As well as highlighting current distribution of land cover types in norther Morocco, using RS data processed by ML algorithms presents new maps that allow quantification of land cover changes computed in pixels. For instance, numerical analysis has revealed that even for the least modified areas of bare areas located near desert, regional inventories show slight changes over diverse seasonal periods during calendar year. Spatial biases are also apparent if comparing such land cover types as grassland, croplands and forests.
 
 \begin{longtable}{@{\extracolsep{\fill}}p{1.5cm}cccccccc@{}}
 \caption{Bimonthly evaluation of the class means of Digital Numbers (DN) computed for pixels assigned to 10 land cover classes in landscapes of Rif Mountains, north Morocco. Evaluated each multispectral band (1 to 7) of Landsat 8-9 OLI/TIRS. Period: 2023, January to May.} \label{tab03}\\
@@ -727,6 +741,11 @@ Visualization of Earth landscapes using cartographic methods has many approaches
 \hline
 \end{longtable}
 
+%----------- subsection ----------->
+\subsection{\textcolor{blue}{Accuracy assessment}}
+
+\hl{Spectral reflectance of these elements can be formally evaluated through digital numbers read from the satellite images using ML algorithms. Hence, selecting optimal approach that accurately discriminates pixels on the image and identifies their category correctly presents an important process in cartographic framework. The suitability of algorithms has been assessed according to four criteria: 1) ease of constructing using functionality of GRASS GIS modules, 2) the ability of algorithm to derive physical insight into land cover types from the satellite images for environmental investigation, 3) the ability to use each model to make quantitations based the processed satellite data, and to generate numerical reports, 4) accuracy assessment in which the models might be tested.}
+
 \begin{figure}[H]
     \begin{center}
 	\hspace{-0pt}\includegraphics[width=14.0cm]{Fig_09}
@@ -734,6 +753,8 @@ Visualization of Earth landscapes using cartographic methods has many approaches
     \caption{Accuracy evaluation using computed correctly classified pixels (\%), GRASS GIS.}
     \label{fig09}
 \end{figure}
+
+Here, the rejection threshold map contains the index of a confidence level calculated for each classified pixel in the classified image of the 10 land cover classes in the Morocco region. Confidence intervals are defined and the rejection map is visualized with lower values meaning 'keep the correctly classified pixel' and higher values meaning “reject a misclassified pixel that could belong to another class category”. Thus, this map identifies cells in the classified raster image that have a low probability, i.e. a high rejection index, of being correctly assigned to the target class.
 
 The maps describing land use in the Rif mountain region are scientific and decision-making tools for Moroccan authorities and educational institutions. The images processed by GRASS GIS methods can be used in research work as input data for modeling systems of bimonthly vegetation cycles in the geomorphological context of the Rif. In addition, it can also be used for operational monitoring of bimonthly vegetation changes in northern Morocco, to apply research recommendations that require precise knowledge of the Rif territories.
 
@@ -758,8 +779,6 @@ The maps describing land use in the Rif mountain region are scientific and decis
 \end{tabularx}
 \caption{Computed points stability for iterations during classification and convergence of classes: January, March, May, July, September and November 2023}\label{tabA06}
 \end{table}
-
-Complex interactions between human activities, climate change and environmental dynamics results in high vulnerability of landscapes and ecosystems in Morocco. This is particularly important in northern Morocco, a region which is highly sensitive to the contrasting effects of climate variability ranging from arid Sahara to humid Mediterranean, and where current land cover types are affected by pastoralism. As well as highlighting current distribution of land cover types in norther Morocco, using RS data processed by ML algorithms presents new maps that allow quantification of land cover changes computed in pixels. For instance, numerical analysis has revealed that even for the least modified areas of bare areas located near desert, regional inventories show slight changes over diverse seasonal periods during calendar year. Spatial biases are also apparent if comparing such land cover types as grassland, croplands and forests.
 
 %----------- section ----------->
 \section{Conclusion}
