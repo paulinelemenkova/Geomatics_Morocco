@@ -218,12 +218,12 @@ The Landsat 8-9 OLI/TIRS satellite image data covering the bimonthly period 2023
     \label{fig03}
 \end{figure}
 
-The L2 data type is OLI\_TIRS\_L2SP with the ground control points of version 5. The processing software version is LPGS\_15.3.1c for Landsat-8 scenes and LPGS\_16.3.1 for Landsat-9 (2023) scene. The satellite roll angle is zero for Landsat 8 scenes and -0.001 for Landsat 9. The images were taken during the day at Nadir, with cloud cover less than 10\%. Here, only multispectral bands with an acquisition resolution of 30 meters were used, except for panchromatic bands with a resolution of 15 m. The combination of multispectral bands is mainly used for the creation of false/true color composites for classification, especially for image visualization. The available data were listed using the search template in "g.list rast". 
+\hl{Although both Landsat 8 and Landsat 9 carry the Operational Land Imager (OLI) and the Thermal Infrared Sensor (TIRS), Landsat 9 is equipped with the second-generation versions of these instruments, known as the Operational Land Imager 2 (OLI-2) and the Thermal Infrared Sensor 2 (TIRS-2). In this study, images from Landsat 8 and 9 are employed. }The L2 data type is OLI\_TIRS\_L2SP with the ground control points of version 5. The processing software version is LPGS\_15.3.1c for Landsat-8 scenes and LPGS\_16.3.1 for Landsat-9 (2023) scene. The satellite roll angle is zero for Landsat 8 scenes and -0.001 for Landsat 9. The images were taken during the day at Nadir, with cloud cover less than 10\%. Here, only multispectral bands with an acquisition resolution of 30 meters were used, except for panchromatic bands with a resolution of 15 m. The combination of multispectral bands is mainly used for the creation of false/true color composites for classification, especially for image visualization. The available data were listed using the search template in "g.list rast". 
 
 %----------- subsection ----------->
 \subsection{Workflow}
 
-We first plot the workflow obtained from each methodological step to provide a general picture of the approach used in this study. Since various GIS include different steps of data processing, so we next summarise the scheme into 12 well-recognised research steps, based on modules of GRASS GIS for geospatial data processing. Major research steps include the following points: 1) Data collection; 2) Software selection; 3) Quality control; 4) Data pre-processing; 5) Image processing 6) Clustering (unsupervised classification); 7) Machine learning; 8) Training dataset; 9) Supervised classification; 10) Numerical computation; 11) Cartographic mapping; 12) Validation, Figure \ref{fig04}.
+We first plot the workflow obtained from each methodological step to provide a general picture of the approach used in this study, Figure \ref{fig04}. 
 
 \begin{figure}[H]
     \begin{center}
@@ -233,13 +233,33 @@ We first plot the workflow obtained from each methodological step to provide a g
     \label{fig04}
 \end{figure}
 
-The distinct feature of GRASS GIS, the advanced software for RS data processing and cartographic mapping, is that is enables to perform various tasks of cartographic tasks using console-based menu. It enables to integrate geospatial data, to extract and interpret information from raw satellite images, to perform mapping and visualization, to process numerical and statistical analysis and computation, and to evaluate the results for quality control. Geospatial data that can be processed in GRASS GIS can be originated from many different sources and it recognises both raster and vector formats of diverse geospatial extensions. The software is freely and openly available through its developer portal (https://grass.osgeo.org/) which makes it a valuable tool for learning and research. GRASS GIS was created as the cartographic data program, and contains independent modules from diverse provider developers, for example, 'r.import', 'i.maxlik', etc. Moreover, GRASS GIS has a built-in framework and Python Application Programming Interface (API), which supports advanced processing of satellite time series analysis and spatial data. 
+Since various GIS include different steps of data processing, so we next summarise the scheme into 12 well-recognised research steps, based on modules of GRASS GIS for geospatial data processing. Major research steps include the following points: 1) Data collection; 2) Software selection; 3) Quality control; 4) Data pre-processing; 5) Image processing 6) Clustering (unsupervised classification); 7) Machine learning; 8) Training dataset; 9) Supervised classification; 10) Numerical computation; 11) Cartographic mapping; 12) Validation. \hl{The entire process of spatial RS data handling processing using GRASS GIS processes raw satellite images, extracts information from the original data, creates attributes obtained from the raster matrices, and enables use new information to digital maps. This links the original raw data to the final output of thematic environmental maps through the complex process of cartographic data management.}
 
-The data preprocessing procedures included several steps which include geometric and atmospheric correction for optical remote sensing images. The geometric correction was performed using 'i.rectify' module of GRASS GIS which corrected each image by performing a coordinate transformation for the pixels in the images using control points. Hence the x,y cell coordinates on the images were re-calculated to a transformation matrix and then converted to standard map coordinates for each pixel in the image. Following that, the atmospheric correction was performed using the 6S algorithm embedded in the 'i.atcorr' module of GRASS GIS. The atmospheric correction is essential to evaluating numerically the amount of wavelengths reflected of diverse land cover types of the surface in various seasonal periods \cite{f14071414,ABDELRAHMANHEGAB2024716}. The pansharpening has been performed using the 'i.pansharpen' module of GRSAS GIS which uses image fusion algorithms to sharpen multispectral channels with high-resolution panchromatic channels. In this way, the resolution of the multispectral is improved. The effectiveness of the pansharpening is described in earlier studies on RS data processing \cite{rs15082017,rs13173433}.
+%----------- subsection ----------->
+\subsection{\textcolor{blue}{Software}}
+The distinct feature of GRASS GIS, the advanced software for RS data processing and cartographic mapping, is that \hl{it} enables to perform various tasks of cartographic tasks using console-based menu. It enables to integrate geospatial data, to extract and interpret information from raw satellite images, to perform mapping and visualization, to process numerical and statistical analysis and computation, and to evaluate the results for quality control. Geospatial data that can be processed in GRASS GIS can be originated from many different sources and it recognises both raster and vector formats of diverse geospatial extensions. The software is freely and openly available through its developer portal 
+(\href{https://grass.osgeo.org/}{https://grass.osgeo.org/}) which makes it a valuable tool for learning and research. The image processing process is composed of the following steps, implemented in the form of free and open source modules on GRASS GIS. The code for organising the project and importing data is presented below. 
 
-Mapping of topographic data was carried out using GMT using existing methods \cite{Lemenkova202221,BECKER20051075,Lemenkova202217,10537274,5369602}, while mapping of land use data was carried out using QGIS \cite{FANG202031}. Mapping of land cover maps from RS data is based on satellite image classification methods.
+The GRASS GIS was created as the cartographic data program, and contains independent modules from diverse provider developers, for example, 'r.import', 'i.maxlik', etc. Moreover, GRASS GIS has a built-in framework and Python Application Programming Interface (API), which supports advanced processing of satellite time series analysis and spatial data. Mapping of topographic data was carried out using GMT using existing methods \cite{Lemenkova202221,BECKER20051075,Lemenkova202217,10537274,5369602}, while mapping of land use data was carried out using QGIS \cite{FANG202031}. Mapping of land cover maps from RS data is based on satellite image classification methods.
 
-The aim of this approach is to model the data and predict for each pixel a label, i.e. Land Cover Class. Using ML methods, these methods are divided into two categories: supervised classification and unsupervised classification. This study involves the use and comparison of these two methods. The image processing process is composed of the following steps, implemented in the form of free and open source modules on GRASS GIS. The code for organising the project and importing data is presented below.
+%----------- subsection ----------->
+\subsection{\textcolor{blue}{Data preprocessing}}
+The data preprocessing procedures included several steps which include geometric and atmospheric correction for optical remote sensing images. First, the import and preprocessing of six Landsat images was implemented using the modules 'r.import' that reads the data. \hl{Then, the} geometric correction was performed using 'i.rectify' module of GRASS GIS which corrected each image by performing a coordinate transformation for the pixels in the images using control points. Hence the x,y cell coordinates on the images were re-calculated to a transformation matrix and then converted to standard map coordinates for each pixel in the image. Following that, the atmospheric correction was performed using the 6S algorithm embedded in the 'i.atcorr' module of GRASS GIS. 
+
+The atmospheric correction is essential to evaluating numerically the amount of wavelengths reflected of diverse land cover types of the surface in various seasonal periods \cite{f14071414,ABDELRAHMANHEGAB2024716}. \hl{The} 'i.landsat.toar' was used to convert Landsat 8-9 OLI/TIRS images and to transform the calibrated digital numbers for the reflectance at the top of the atmosphere. In this way, the quality of the images has been improved. The pansharpening has been performed using the 'i.pansharpen' module of GRSAS GIS which uses image fusion algorithms to sharpen multispectral channels with high-resolution panchromatic channels. In this way, the resolution of the multispectral is improved. The effectiveness of the pansharpening is described in earlier studies on RS data processing \cite{rs15082017,rs13173433}.
+
+%----------- subsection ----------->
+\subsection{\textcolor{blue}{Creating colour composites}}
+
+Creation of colour composites (Figure \ref{fig05}) was performed based on the Landsat multispectral bands using the 'r.composite' module and visualization of the images using the 'd.rast' module. The spectral combination calculation integrates different spectral bands of Landsat based on the physical properties of the land covers reflected in the images. Therefore, the spectral bands are useful to improve the discrimination between landscape classes. The estimation of the color composition model aims to better recognise the ten land cover classes representing landscape patches in the Rif Mountains and its surroundings in the images. The vegetation observed on the Atlantic Ocean side appears in darker reds than the surrounding vegetation around the Rif Mountains. The water that absorbs almost all wavelengths is very dark, up to black, while the empty ground surface appears very light, in tones ranging from beige to ochre, Figure \ref{fig05}. On the coloured composition in "false colors", the vegetation appears in different shades depending on the species, but also on the environmental conditions: geomorphology of the mountain slope, the curvature and the inclination of the slope that affect the shadows on the images, Figure \ref{fig05}.
+
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-15pt}\includegraphics[width=14.0cm]{Fig_05}
+    \end{center}
+    \caption{Landsat 8-9 multispectral images: false and true colour composites.}
+    \label{fig05}
+\end{figure}
 
 \begin{footnotesize}
 \begin{verbatim}
@@ -275,25 +295,11 @@ output=L9_2023_J_06 extent=region resolution=region
 r.import input=/Users/polinalemenkova/grassdata/Morocco/
 LC09_L2SP_201036_20230126_20230313_02_T1_SR_B7.TIF
  output=L9_2023_J_07 extent=region resolution=region
-#
 g.list rast
-# g.remove -f type=raster name=L9_2023_J_J_01
 \end{verbatim}
 \end{footnotesize}
 
-First, the import and preprocessing of six Landsat images was implemented using the modules 'r.import' that reads the data. Then, the 'i.landsat.toar' was used to convert Landsat 8-9 OLI/TIRS images and to transform the calibrated digital numbers for the reflectance at the top of the atmosphere. In this way, the quality of the images has been improved. On the coloured composition in "false colors", the vegetation appears in different shades depending on the species, but also on the environmental conditions: geomorphology of the mountain slope, the curvature and the inclination of the slope that affect the shadows on the images, Figure \ref{fig05}.
-
-\begin{figure}[H]
-    \begin{center}
-	\hspace{-15pt}\includegraphics[width=14.0cm]{Fig_05}
-    \end{center}
-    \caption{Landsat 8-9 multispectral images: false and true colour composites.}
-    \label{fig05}
-\end{figure}
-
-The spectral combination calculation integrates different spectral bands of Landsat based on the physical properties of the land covers reflected in the images. Therefore, the spectral bands are useful to improve the discrimination between landscape classes, Figure \ref{fig05}. The vegetation observed on the Atlantic Ocean side appears in darker reds than the surrounding vegetation around the Rif Mountains. The water that absorbs almost all wavelengths is very dark, up to black, while the empty ground surface appears very light, in tones ranging from beige to ochre, Figure \ref{fig05}.
-
-Creation of colour composites (Figure \ref{fig05}) was performed based on the Landsat multispectral bands using the 'r.composite' module and visualization of the images using the 'd.rast' module. The estimation of the color composition model aims to better recognise the ten land cover classes representing landscape patches in the Rif Mountains and its surroundings in the images. Modelling and simulation of the images using the principle of colour compositions includes 'true color' and 'false color' images, Figure \ref{fig05}. Here, the spectral bands of the images are visualized in several colour combinations that are widely used in RS because they are very suitable for studying vegetation and landscape. For example, the combination with band number 5 (infrared, IR) is based on the properties of vegetation that reflect very strongly near-IR radiation.
+Modelling and simulation of the images using the principle of colour compositions includes 'true color' and 'false color' images, Figure \ref{fig05}. Here, the spectral bands of the images are visualized in several colour combinations that are widely used in RS because they are very suitable for studying vegetation and landscape. For example, the combination with band number 5 (infrared, IR) is based on the properties of vegetation that reflect very strongly near-IR radiation.
 
 \begin{footnotesize}
 \begin{verbatim}
@@ -320,7 +326,9 @@ d.out.file output=Morocco_J_234 format=jpg --overwrite
 \end{verbatim}
 \end{footnotesize}
 
-The use of ML approach to satellite image processing by GRASS GIS consists of two phases. The first consists of estimating a model from data by automatic clustering. The unsupervised clustering approach groups comparable samples within the same class using the k-means algorithm. The image clustering and classification according to the maximum likelihood algorithm (unsupervised learning) using the 'i.cluster' and 'i.maxlik' modules. The groups, i.e. the clusters are made up of pixels with similar spectral values. The unsupervised classification uses the clustering approach performed using the 'i.cluster' module as explained above.
+%----------- subsection ----------->
+\subsection{\textcolor{blue}{Image classification}}
+The aim of \hl{image classification} is to model the \hl{raster }data and predict for each pixel a label, i.e. Land Cover Class. \hl{In this work, image classification was performed using} two \hl{principally distinct approaches}: supervised classification and unsupervised classification. The use of ML approach to satellite image processing by GRASS GIS consists of two phases. The first \hl{includes} estimating a model from data by automatic clustering. The unsupervised clustering approach groups comparable samples within the same class using the k-means algorithm. The image clustering and classification according to the maximum likelihood algorithm (unsupervised learning) using the 'i.cluster' and 'i.maxlik' modules. The groups, i.e. the clusters are made up of pixels with similar spectral values. 
 
 The unsupervised classification employs clustering approach performed using the "i.cluster" module. The "i.cluster" generates a signature file and reports the cluster maps, or regions, that were automatically generated using the "k-means" data partitioning algorithm. The GRASS SIG code used for this is the following (example for the 2013 image, repeated for images from all other years using the same technique): "i.cluster group=L8\_2013 subgroup=res\_30m signaturefile=cluster\_L8\_2013 classes=8 reportfile=rep\_clust\_L8\_2013.txt". Therefore, samples within a class are dissimilar from samples in others.
 
@@ -446,6 +454,14 @@ Finally, the visualization of images using the auxiliary graphic modules of GRAS
 
 Mountain areas in northern Morocco are particularly sensitive to climate change and pastoral activities. Seasonal variations in climate and effects from human activities strongly influence agro-ecosystems and cause changes in land cover types. Although there are some efforts on mapping the landscape dynamics in such areas, any seasonal response of the land cover types will is better evaluated using quantitative assessment of RS data and ML methods. Using examples from the Rif Atlas in Morocco, this paper explored the seasonal variations in land cover types in northern Morocco in 2023 caused by the effects from livestock management, arboriculture and climate change. The selected period was assessed for the year 2023 using the available time series from Landsat dataset collection. The results of satellite image classification were obtained using three approaches: unsupervised classification and supervised classification by ML methods which employs two distinct algorithms: "Decision tree classifier" and "Extra tree classifier". Figure \ref{fig06} shows the images generated using the clustering classification method, which illustrate the land cover changes with a bi-monthly time interval, Table \ref{tab01}.
 
+\begin{figure}[H]
+    \begin{center}
+	\hspace{-0pt}\includegraphics[width=14.0cm]{Fig_06}
+    \end{center}
+    \caption{Satellite image classification using unsupervised classification clustering methods and the GRASS GIS 'MaxLike' approach.}
+    \label{fig06}
+\end{figure}
+
 \begin{table}[H]
 \centering
 \begin{tabularx}{\textwidth}{| p{1.5cm} | X | X | X | X | X | X | X | X | X | X | }
@@ -467,14 +483,6 @@ Mountain areas in northern Morocco are particularly sensitive to climate change 
 \subsection{\textcolor{blue}{Interpretation of land cover types}}
 
 Figure \ref{fig07} shows that the classification using the “decision tree classifier” method improved the results since the ML results are more robust and stable compared to the unsupervised classification. The January scene shows the least plant activity which gradually increases from March to May and decreases respectively after the hot summer period until November.
-
-\begin{figure}[H]
-    \begin{center}
-	\hspace{-0pt}\includegraphics[width=14.0cm]{Fig_06}
-    \end{center}
-    \caption{Satellite image classification using unsupervised classification clustering methods and the GRASS GIS 'MaxLike' approach.}
-    \label{fig06}
-\end{figure}
 
 The identified 10 land cover classes were generalised from the FAO-based land cover classes in Morocco, Figure \ref{fig02}. The generalised scheme used in this research include the following 10 categories: 1) Water; 2) Broadleaved forest; 3) Grassland; 4) Wetlands; 5) Urban areas; 6) Coniferous forest; 7) Shrubland (thicket); 8) Sparse vegetation in semi-deserts; 9) Bare areas; 10) Cropland. The comparison of the obtained results was performed using the existing classification schemes in studies on land cover types in Morocco \cite{Kusi,Hamdani,Kusi2023,Elfallah,Idoumskine}.
 
@@ -746,6 +754,8 @@ Visualization of Earth landscapes using cartographic methods has many approaches
 
 \hl{Spectral reflectance of these elements can be formally evaluated through digital numbers read from the satellite images using ML algorithms. Hence, selecting optimal approach that accurately discriminates pixels on the image and identifies their category correctly presents an important process in cartographic framework. The suitability of algorithms has been assessed according to four criteria: 1) ease of constructing using functionality of GRASS GIS modules, 2) the ability of algorithm to derive physical insight into land cover types from the satellite images for environmental investigation, 3) the ability to use each model to make quantitations based the processed satellite data, and to generate numerical reports, 4) accuracy assessment in which the models might be tested.}
 
+Here, the rejection threshold map contains the index of a confidence level calculated for each classified pixel in the classified image of the 10 land cover classes in the Morocco region. Confidence intervals are defined and the rejection map is visualized with lower values meaning 'keep the correctly classified pixel' and higher values meaning “reject a misclassified pixel that could belong to another class category”. Thus, this map identifies cells in the classified raster image that have a low probability, i.e. a high rejection index, of being correctly assigned to the target class.
+
 \begin{figure}[H]
     \begin{center}
 	\hspace{-0pt}\includegraphics[width=14.0cm]{Fig_09}
@@ -753,8 +763,6 @@ Visualization of Earth landscapes using cartographic methods has many approaches
     \caption{Accuracy evaluation using computed correctly classified pixels (\%), GRASS GIS.}
     \label{fig09}
 \end{figure}
-
-Here, the rejection threshold map contains the index of a confidence level calculated for each classified pixel in the classified image of the 10 land cover classes in the Morocco region. Confidence intervals are defined and the rejection map is visualized with lower values meaning 'keep the correctly classified pixel' and higher values meaning “reject a misclassified pixel that could belong to another class category”. Thus, this map identifies cells in the classified raster image that have a low probability, i.e. a high rejection index, of being correctly assigned to the target class.
 
 The maps describing land use in the Rif mountain region are scientific and decision-making tools for Moroccan authorities and educational institutions. The images processed by GRASS GIS methods can be used in research work as input data for modeling systems of bimonthly vegetation cycles in the geomorphological context of the Rif. In addition, it can also be used for operational monitoring of bimonthly vegetation changes in northern Morocco, to apply research recommendations that require precise knowledge of the Rif territories.
 
