@@ -540,7 +540,7 @@ Compared to other land cover types, the mosaic vegetation types of deciduous for
 
 {The} most complex landscape patches with high heterogeneity can be better distinguished, including sparsely distributed and densely distributed vegetation segments. Compared to the previous results in Figures \ref{fig06} and \ref{fig07}, the results of the Extra tree are not quite similar for the classification maps based on the “Decision tree” (Figure \ref{fig07}) and “Extra tree” algorithms (Figure \ref{fig08}), because they rely on the extremely random trees method. The “Extra tree” algorithm is similar to the random forest algorithm in its nature, but it processes images much faster. Therefore, technically, this algorithm is an improved ensemble supervised ML method.
 
-However, this algorithm creates many decision trees using random sampling of pixels for each tree. The most important and unique feature of the “Extra trees” algorithm is that it randomly selects a pixel division value. Therefore, compared with the “decision tree” algorithms, the land cover types are diverse and uncorrelated. The best performance among the three image processing methods is demonstrated by the “decision tree” algorithms, which divide the image into land cover classes with precision and detail. The accuracy assessment is presented in Figure \ref{fig09} and the computational results are available in Tables \ref{tab03} and  \ref{tab04}.
+However, this algorithm creates many decision trees using random sampling of pixels for each tree. The most important and unique feature of the “Extra trees” algorithm is that it randomly selects a pixel division value. Therefore, compared with the “decision tree” algorithms, the land cover types are diverse and uncorrelated. The best performance among the three image processing methods is demonstrated by the “decision tree” algorithms, which divide the image into land cover classes with precision and detail. The accuracy assessment is presented in Figure \ref{fig09} and the computational results are available in Tables \ref{tab03} and \ref{tab04}.
 
 
 
@@ -926,7 +926,7 @@ WGS84 & World Geodetic System 84 \\
     Class 10 & 9928.17 & 10,811.9 & 12,960.4 & 15,066.3 & 21,072.7 & 22,046.7 & 18,053.2 \\
     \bottomrule
 \end{tabularx}
-
+\label{tabA02}
 \end{table}
 
 \begin{table}[H]
@@ -945,7 +945,7 @@ WGS84 & World Geodetic System 84 \\
     Class 10 & 8996.41 & 9429.61 & 10,994.6 & 11,484.2 & 21,068.7 & 17,659.6 & 14,806.2 \\
     \bottomrule
 \end{tabularx}
-
+\label{tabA03}
 \end{table}
 \vspace{-6pt}
 
@@ -966,7 +966,7 @@ WGS84 & World Geodetic System 84 \\
     Class 10 & 10,159.7 & 11,050.8 & 13,111.1 & 14,742.5 & 19,360.6 & 22,212.9 & 18,759.6 \\
     \bottomrule
 \end{tabularx}
-
+\label{tabA04}
 \end{table}
 \vspace{-6pt}
 \begin{table}[H]
@@ -985,7 +985,7 @@ WGS84 & World Geodetic System 84 \\
     Class 10 & 9973.21 & 10,690.2 & 12,556.4 & 14,197.8 & 18,538.8 & 21,681.7 & 18,564.6 \\
     \bottomrule
 \end{tabularx}
-
+\label{tabA05}
 \end{table}
 \vspace{-6pt}
 \begin{table}[H]
@@ -1004,6 +1004,7 @@ WGS84 & World Geodetic System 84 \\
     Class 10 & 9507.41 & 10,035.8 & 11,552.8 & 12,647.9 & 17,635.2 & 19,336.3 & 16,768.9 \\
     \bottomrule
 \end{tabularx}
+\label{tabA06}
 \end{table}
 
 %--------------------------->
@@ -1064,8 +1065,6 @@ WGS84 & World Geodetic System 84 \\
 \bottomrule
 \end{tabularx}
 \end{table}
-
-
 
 \begin{table}[H]
 \caption{Bimonthly evaluation of the standard deviations of Digital Numbers (DN) computed for pixels assigned to 10 land cover classes in landscapes of Rif Mountains, north Morocco. Evaluated each multispectral band (1 to 7) of Landsat 8--9 OLI/TIRS. Period: 2023, July to November.} \label{tab04}
