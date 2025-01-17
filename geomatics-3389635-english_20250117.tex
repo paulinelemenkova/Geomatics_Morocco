@@ -734,6 +734,7 @@ The maps describing land use in the Rif mountain region are scientific and usefu
 %MDPI: Please confirm if the bold is unnecessary and can be removed. The following highlights are the same.
 %Author: bold is not necessary, I removed it.
 
+Additionally, the stability of the computed points during performed iterations of the classification are summarised in Table \ref{tab05}. They include the convergence of classes in bimonthly periods: January, March, May, July, September and November 2023.
 
 \begin{table}[H]
 
@@ -799,7 +800,7 @@ The maps describing land use in the Rif mountain region are scientific and usefu
 
 
 \begin{table}[H]
-\caption{Computed points stability for iterations during classification and convergence of classes: January, March, May, July, September and November 2023.}\label{tabA06}
+\caption{Computed points stability for iterations during classification and convergence of classes: January, March, May, July, September and November 2023.}\label{tab05}
 \begin{tabularx}{\textwidth}{p{1.7cm}  XX  X  X  X X }
   \toprule
    Iteration & 01/2023 & 03/2023 & 05/2023 & 07/2023 & 09/2023 & 11/2023  \\
@@ -820,6 +821,9 @@ The maps describing land use in the Rif mountain region are scientific and usefu
 
 \end{table}
 %MDPI: Please cite the table in the text and ensure that the first citation of each figure appears in numerical order.
+
+The statistical analysis with computed initial means for each class of pixels in multispectral bands of the satellite images are provided in Appendix \ref{AppA}. Additionally, standard deviations for Digital Numbers (DNs) of pixels are computed by 10 corresponding classes with results reported in Appendix \ref{AppB}.
+
 %----------- section ----------->
 \section{Conclusions}
 
@@ -848,7 +852,7 @@ This paper demonstrated the implementation of the ML cartographic approach to RS
 
 \conflictsofinterest{The author declares no conflicts of interest.} 
 
-\vspace{444pt}
+%\vspace{444pt}
 
 \abbreviations{Abbreviations}{
 The following abbreviations are used in this manuscript:\\
@@ -881,8 +885,8 @@ WGS84 & World Geodetic System 84 \\
 \appendixstart
 \appendix
 %--------------------------->
-\section[\appendixname~\thesection]{\hl{Initial} Means for Classes of Pixels in Each Multispectral Band of the Landsat OLI/TIRS Satellite Images}
-%MDPI: Appendixes should be cited. An appendix’s Figures/Tables/Equations can be cited in the main text, but are not mandatory, please check and revise
+\section[\appendixname~\thesection]{Initial Means for Classes of Pixels in Each Multispectral Band of the Landsat OLI/TIRS Satellite Images}\label{AppA}
+%MDPI: Appendixes should be cited. An appendix’s Figures/Tables/Equations can be cited in the main text, but are not mandatory, please check and revise. % Author: cited in the phrases: "The statistical analysis with computed initial means for each class of pixels in multispectral bands of the satellite images are provided in Appendix \ref{AppA}". These sentences are placed in the last paragraph of subsection '5.5. Accuracy Assessment', just before the Conclusion section.
 
 \vspace{-3pt}
 \begin{table}[H]
@@ -1005,7 +1009,7 @@ WGS84 & World Geodetic System 84 \\
 \end{table}
 
 %--------------------------->
-\section[\appendixname~\thesection]{Standard Deviations for DNs of Pixels by 10 Computed Classes}
+\section[\appendixname~\thesection]{Standard Deviations for DNs of Pixels by 10 Computed Classes}\label{AppB}
 \vspace{-3pt}
 \begin{table}[H]
 \caption{Bimonthly evaluation of the standard deviations of Digital Numbers (DN) computed for pixels assigned to 10 land cover classes in landscapes of Rif Mountains, north Morocco. Evaluated each multispectral band (1 to 7) of Landsat 8--9 OLI/TIRS. Period: 2023, January to May.} \label{tabA07}
@@ -1018,7 +1022,7 @@ WGS84 & World Geodetic System 84 \\
 
 
 %\bf{2019} &  &  &  &  &  &  & \\
-\multicolumn{8}{ c }{\textbf{2023: January}}\\
+\multicolumn{8}{ c }{2023: January}\\
  \midrule
 1 & 520.366 & 535.906 & 762.029 & 534.589 & 458.971 & 261.960 & 185.243 \\
 2 & 490.239 & 471.037 & 624.903 & 718.469 & 1108.75 & 864.994 & 643.283 \\
@@ -1032,7 +1036,7 @@ WGS84 & World Geodetic System 84 \\
 10 & 3912.350 & 4022.450 & 3523.310 & 3432.850 & 3098.910 & 2796.470 & 2599.350 \\
  \midrule
 %\bf{2022} &  &  &  & & & & \\
-\multicolumn{8}{ c }{\textbf{2023: March}}\\
+\multicolumn{8}{ c }{2023: March}\\
  \midrule
 1 & 490.469 & 541.212 & 879.207 & 716.637 & 616.488 & 686.935 & 613.483 \\
 2 & 255.312 & 246.682 & 318.072 & 462.128 & 1664.020 & 929.262 & 719.619 \\
@@ -1047,7 +1051,7 @@ WGS84 & World Geodetic System 84 \\
  \midrule
 
 %\bf{2023} &  &  &  & & & & \\
-\multicolumn{8}{ c }{\textbf{2023: May}}\\
+\multicolumn{8}{ c }{2023: May}\\
  \midrule
 1 & 465.095 & 566.529 & 901.861 & 522.758 & 321.154 & 193.603 & 120.269 \\
 2 & 277.062 & 255.083 & 376.608 & 450.477 & 1258.88 & 804.346 & 710.667 \\
@@ -1073,7 +1077,7 @@ WGS84 & World Geodetic System 84 \\
 
 
 %\bf{2019} &  &  &  &  &  &  & \\
-\multicolumn{8}{ c }{\textbf{2023: July}}\\
+\multicolumn{8}{ c }{2023: July}\\
  \midrule 
 1 & 401.603 & 474.680 & 753.823 & 554.671 & 452.066 & 377.558 & 279.117 \\
 2 & 444.544 & 494.063 & 605.472 & 689.234 & 1469.020 & 1074.000 & 858.682 \\
@@ -1087,7 +1091,7 @@ WGS84 & World Geodetic System 84 \\
 10 & 994.099 & 1126.100 & 1284.760 & 1153.090 & 1115.620 & 1242.490 & 1575.490 \\
  \midrule 
 %\bf{2022} &  &  &  & & & & \\
-\multicolumn{8}{ c }{\textbf{2023: September}}\\
+\multicolumn{8}{ c }{2023: September}\\
  \midrule 
 1 & 437.651 & 443.108 & 680.601 & 464.861 & 251.267 & 134.622 & 109.822 \\
 2 & 352.790 & 343.761 & 458.110 & 604.993 & 1647.410 & 1009.150 & 737.153 \\
@@ -1102,7 +1106,7 @@ WGS84 & World Geodetic System 84 \\
  \midrule 
 
 %\bf{2023} &  &  &  & & & & \\
-\multicolumn{8}{ c}{\textbf{2023: November}}\\
+\multicolumn{8}{ c}{2023: November}\\
  \midrule 
 1 & 408.799 & 366.029 & 518.468 & 358.299 & 494.063 & 288.290 & 183.250 \\
 2 & 337.779 & 313.223 & 378.857 & 471.889 & 1236.690 & 864.664 & 718.244 \\
