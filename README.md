@@ -7,3 +7,8 @@ LaTeX source for the peer-reviewed article by Polina Lemenkova.
 
 ## Citation
 Lemenkova, P. Improving Bimonthly Landscape Monitoring in Morocco, North Africa, by Integrating Machine Learning with GRASS GIS. *Geomatics* **2025**, *5*, 5. https://doi.org/10.3390/geomatics5010005
+
+## Code
+
+The GRASS GIS scripts used to produce the results in this article are available at:
+https://github.com/paulinelemenkova/grass-ml-landcover-morocco
